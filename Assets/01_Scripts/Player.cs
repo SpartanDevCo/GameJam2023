@@ -16,6 +16,9 @@ public class Player : MonoBehaviour
     [SerializeField] GameObject rocks;
     [SerializeField] Transform spawnPoint;
     [SerializeField] GameObject slash;
+
+    [Header("Animaciones")]
+    public Animator anim;
     // Start is called before the first frame update
     void Start()
     {
@@ -37,6 +40,7 @@ public class Player : MonoBehaviour
     {
         float x = Input.GetAxis("Horizontal");
         float z = Input.GetAxis("Vertical");
+        anim.SetFloat("run", Mathf.Abs(x + z));
         transform.Translate(x * Time.deltaTime * speed, 0, z * Time.deltaTime * speed);
     }
 
