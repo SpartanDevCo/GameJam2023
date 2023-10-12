@@ -374,6 +374,8 @@ MonoBehaviour:
   jumpSpeed: 7
   attackType: 0
   rb: {fileID: 8070365978521861310}
+  rocks: {fileID: 2745985064960132503, guid: d22c97ca7a52d5b43b850f8b81ed88f1, type: 3}
+  spawnPoint: {fileID: 5869177057945806301}
 --- !u!114 &9071132731534928700
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -387,7 +389,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spawnClawsPoint: {fileID: 5869177057945806301}
-  playerTransform: {fileID: 5250124740237387569}
   claws: {fileID: 8143710225979628322, guid: e5eb0932867ffe54fafbad2dee0be987, type: 3}
   p: {fileID: 0}
 --- !u!54 &8070365978521861310
