@@ -15,6 +15,7 @@ public class Player : MonoBehaviour
     [SerializeField] Rigidbody rb;
     [SerializeField] GameObject rocks;
     [SerializeField] Transform spawnPoint;
+    [SerializeField] GameObject slash;
     // Start is called before the first frame update
     void Start()
     {
@@ -65,7 +66,10 @@ public class Player : MonoBehaviour
         switch (attackType)
         {
             case AttackType.Rock:
-            RockAttack();
+                RockAttack();
+                break;
+            case AttackType.Wind:
+                AirAttack();
                 break;
         }
     }
@@ -81,9 +85,13 @@ public class Player : MonoBehaviour
                 Vector3 groundPosition = hit.point;
 
                 // Spawnear el objeto al nivel del suelo
-                Instantiate(rocks,new Vector3(groundPosition.x, groundPosition.y, groundPosition.z), Quaternion.Euler(transform.rotation.eulerAngles.x + 30f, transform.rotation.eulerAngles.y, transform.rotation.eulerAngles.z));
+                Instantiate(rocks,groundPosition + transform.forward *2, Quaternion.Euler(transform.rotation.eulerAngles.x + 30f, transform.rotation.eulerAngles.y, transform.rotation.eulerAngles.z));
             }
         }
+    }
+
+    void AirAttack(){
+        Instantiate(slash,spawnPoint.position + transform.forward *2, Quaternion.Euler(transform.rotation.eulerAngles.x, transform.rotation.eulerAngles.y  + 180f, transform.rotation.eulerAngles.z));
     }
 
 
