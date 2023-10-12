@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Diagnostics;
 using UnityEngine;
 
 public class Player : MonoBehaviour
@@ -7,10 +8,13 @@ public class Player : MonoBehaviour
     [Header("Atributos")]
     [SerializeField] float speed = 7;
     [SerializeField] float jumpSpeed = 7;
+    public AttackType attackType = AttackType.Melee;
     float distanceToGround;
 
     [Header("Referencias")]
     [SerializeField] Rigidbody rb;
+    [SerializeField] GameObject rocks;
+    [SerializeField] Transform spawnPoint;
     // Start is called before the first frame update
     void Start()
     {
@@ -24,6 +28,7 @@ public class Player : MonoBehaviour
         Move();
         Jump();
         Rotate();
+        if(Input.GetMouseButtonDown(0)){Attack();}
         
     }
 
@@ -52,8 +57,43 @@ public class Player : MonoBehaviour
     void Jump(){
         
         if(Input.GetKeyDown(KeyCode.Space) && IsGrounded()){
-            Debug.Log("SALTO");
             rb.AddForce(Vector3.up * jumpSpeed, ForceMode.Impulse);
         }
     }
+
+    void Attack(){
+        switch (attackType)
+        {
+            case AttackType.Rock:
+            RockAttack();
+                break;
+        }
+    }
+
+    void RockAttack(){
+        RaycastHit hit;
+        if (Physics.Raycast(spawnPoint.position, Vector3.down, out hit))
+        {
+            // Verifica si el rayo golpea algo
+            if (hit.collider != null)
+            {
+                // La posición del suelo donde el rayo golpea
+                Vector3 groundPosition = hit.point;
+
+                // Spawnear el objeto al nivel del suelo
+                Instantiate(rocks,new Vector3(groundPosition.x, groundPosition.y, groundPosition.z), Quaternion.Euler(transform.rotation.eulerAngles.x + 30f, transform.rotation.eulerAngles.y, transform.rotation.eulerAngles.z));
+            }
+        }
+    }
+
+
+    public enum AttackType{
+        Melee,
+        Rock,
+        Water,
+        Wind,
+        Fire
+    }
+
+    
 }
