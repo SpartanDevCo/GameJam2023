@@ -2,10 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Slash : MonoBehaviour
+public class SlashAirBoss : MonoBehaviour
 {
+    float speed = -15;
     // Start is called before the first frame update
-    int speed = -10;
     void Start()
     {
         Destroy(gameObject, 5);
