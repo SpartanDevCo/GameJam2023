@@ -16,6 +16,8 @@ public class Player : MonoBehaviour
     [SerializeField] GameObject rocks;
     [SerializeField] Transform spawnPoint;
     [SerializeField] GameObject slash;
+    [SerializeField] GameObject waterBeam;
+    
 
     [Header("Animaciones")]
     public Animator anim;
@@ -32,7 +34,7 @@ public class Player : MonoBehaviour
         Move();
         Jump();
         Rotate();
-        if(Input.GetMouseButtonDown(0)){Attack();}
+        if(Input.GetMouseButtonDown(0)){SetAnimAttack();}
         
     }
 
@@ -66,7 +68,22 @@ public class Player : MonoBehaviour
         }
     }
 
-    void Attack(){
+    public void SetAnimAttack(){
+        switch (attackType)
+        {
+            case AttackType.Rock:
+                anim.SetInteger("Special",1);
+                break;
+            case AttackType.Wind:
+                anim.SetInteger("Special",2);
+                break;
+            case AttackType.Water:
+                anim.SetInteger("Special",3);
+                break;
+        }
+    }
+
+    public void Attack(){
         switch (attackType)
         {
             case AttackType.Rock:
@@ -75,7 +92,14 @@ public class Player : MonoBehaviour
             case AttackType.Wind:
                 AirAttack();
                 break;
+            case AttackType.Water:
+                WaterAttack();
+                break;
         }
+    }
+
+    public void ReturnToNormal(){
+        anim.SetInteger("Special",0);
     }
 
     void RockAttack(){
@@ -96,6 +120,10 @@ public class Player : MonoBehaviour
 
     void AirAttack(){
         Instantiate(slash,spawnPoint.position + transform.forward *2, Quaternion.Euler(transform.rotation.eulerAngles.x, transform.rotation.eulerAngles.y  + 180f, transform.rotation.eulerAngles.z));
+    }
+
+    void WaterAttack(){
+        Instantiate(waterBeam,spawnPoint.position, Quaternion.Euler(transform.rotation.eulerAngles.x, transform.rotation.eulerAngles.y, transform.rotation.eulerAngles.z));
     }
 
 
