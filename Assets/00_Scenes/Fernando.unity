@@ -123,11 +123,6 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
---- !u!4 &157556353 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 5250124740237387569, guid: c5ab6aee27529aa47985076ae9fe8d07, type: 3}
-  m_PrefabInstance: {fileID: 7599449205915433485}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &597811264
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -146,11 +141,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7231527966416187225, guid: d22c97ca7a52d5b43b850f8b81ed88f1, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 4.56
+      value: 22.4
       objectReference: {fileID: 0}
     - target: {fileID: 7231527966416187225, guid: d22c97ca7a52d5b43b850f8b81ed88f1, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -2.45
+      value: 7.8
       objectReference: {fileID: 0}
     - target: {fileID: 7231527966416187225, guid: d22c97ca7a52d5b43b850f8b81ed88f1, type: 3}
       propertyPath: m_LocalRotation.w
@@ -545,11 +540,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 23.841, y: 0, z: 0}
---- !u!4 &1585075529 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 5869177057945806301, guid: c5ab6aee27529aa47985076ae9fe8d07, type: 3}
-  m_PrefabInstance: {fileID: 7599449205915433485}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1850975860
 GameObject:
   m_ObjectHideFlags: 0
@@ -712,6 +702,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2837894662146449406, guid: c5ab6aee27529aa47985076ae9fe8d07, type: 3}
+      propertyPath: slash
+      value: 
+      objectReference: {fileID: 1640144176668494902, guid: 6fa95e0342fcab348993cd5e1726f956, type: 3}
     - target: {fileID: 5250124740237387569, guid: c5ab6aee27529aa47985076ae9fe8d07, type: 3}
       propertyPath: m_LocalPosition.x
       value: -25.63
@@ -752,30 +746,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 5869177057945806301, guid: c5ab6aee27529aa47985076ae9fe8d07, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0.07
-      objectReference: {fileID: 0}
-    - target: {fileID: 5869177057945806301, guid: c5ab6aee27529aa47985076ae9fe8d07, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 1.38
-      objectReference: {fileID: 0}
     - target: {fileID: 7718069318842231255, guid: c5ab6aee27529aa47985076ae9fe8d07, type: 3}
       propertyPath: m_Name
       value: PlayerC
       objectReference: {fileID: 0}
-    - target: {fileID: 9071132731534928700, guid: c5ab6aee27529aa47985076ae9fe8d07, type: 3}
-      propertyPath: claws
-      value: 
-      objectReference: {fileID: 8143710225979628322, guid: e5eb0932867ffe54fafbad2dee0be987, type: 3}
-    - target: {fileID: 9071132731534928700, guid: c5ab6aee27529aa47985076ae9fe8d07, type: 3}
-      propertyPath: playerTransform
-      value: 
-      objectReference: {fileID: 157556353}
-    - target: {fileID: 9071132731534928700, guid: c5ab6aee27529aa47985076ae9fe8d07, type: 3}
-      propertyPath: spawnClawsPoint
-      value: 
-      objectReference: {fileID: 1585075529}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
