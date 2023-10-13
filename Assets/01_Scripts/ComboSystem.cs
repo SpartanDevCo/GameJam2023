@@ -4,12 +4,11 @@ using UnityEngine;
 
 public class ComboSystem : MonoBehaviour
 {
-
-    Animator animator;
     int click_quantity;
     bool canClick;
 
     [Header("Referencias")]
+    [SerializeField] Animator animator;
     [SerializeField] Transform spawnClawsPoint;
     [SerializeField] GameObject claws;
 
@@ -17,7 +16,6 @@ public class ComboSystem : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        animator = GetComponent<Animator>();
         p = GetComponent<Player>();
         click_quantity = 0;
         canClick = true;
