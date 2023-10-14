@@ -11,13 +11,20 @@ public class AirBoss : MonoBehaviour
     public int life = 100;
     public Animator anim;
 
-    [Header("Attack 2")]
+    [Header("Attack 1")]
     public Transform target;
     public Vector3 targetPosition;
     public float timeBtwShoot = 7f;
     public int bulletCount = 5;
     public GameObject bulletPrefab;
     public Transform firepoint;
+
+    [Header("Attack 2")]
+    public List<TargetInfo> PatrolPoints;
+    [SerializeField] Transform tornadoSpawnPoint;
+    [SerializeField] GameObject tornadoEffect;
+    public 
+
 
     void Start()
     {
@@ -30,7 +37,7 @@ public class AirBoss : MonoBehaviour
         
     }
 
-    #region
+    #region Attack 1
     public void LookAtPlayer()
     {
         targetPosition = target.position;
@@ -48,6 +55,14 @@ public class AirBoss : MonoBehaviour
         Instantiate(bulletPrefab, firepoint.position,
             Quaternion.Euler( -angleX, firepoint.rotation.y, firepoint.rotation.z));
         Debug.Log(angleX);
+    }
+    #endregion
+
+    #region Attack 2
+
+    public void Tornado()
+    {
+        Instantiate(tornadoEffect, new Vector3(tornadoSpawnPoint.position.x, tornadoSpawnPoint.position.y - 6f, tornadoSpawnPoint.position.z), tornadoSpawnPoint.rotation);
     }
     #endregion
 }

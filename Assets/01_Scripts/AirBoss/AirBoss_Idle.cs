@@ -27,7 +27,7 @@ public class AirBoss_Idle : StateMachineBehaviour
         else
         {
             //animator.SetInteger("attackType", Random.Range(1, 7));
-            animator.SetInteger("attackType", 1);
+            animator.SetInteger("attackType", 2);
             animator.SetTrigger("changeState");
         }
     }
