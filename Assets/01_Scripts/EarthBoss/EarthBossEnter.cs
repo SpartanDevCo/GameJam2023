@@ -17,13 +17,17 @@ public class EarthBossEnter : StateMachineBehaviour
     // OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks
     override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-       if (animator.transform.position.z < 1)
+       if (earthBoss.distanceToPlayer > earthBoss.stopDistance)
        {
             animator.transform.Translate(0, 0, speed * Time.deltaTime);
+            earthBoss.anim.SetBool("walk", true);
+            earthBoss.anim.SetBool("idle", false);
         }
         else
         {
             animator.SetTrigger("ChangeState");
+            earthBoss.anim.SetBool("walk", false);
+            earthBoss.anim.SetBool("idle", true);
         }
     }
 

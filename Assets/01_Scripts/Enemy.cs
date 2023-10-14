@@ -47,11 +47,13 @@ public class Enemy : MonoBehaviour,IDamageable
         transform.rotation = Quaternion.Euler(0, angleY, 0);
     }
 
-    // public void TakeDamage(float damage){
-    //     life -= damage;
-    //     if (life <= 0){
-    //         Destroy(gameObject);
-    //     }
-    // }
+    public void TakeDamage(float damage){
+        life -= damage;
+        Debug.Log("Enemy life: " + life);
+        if (life <= 0){
+            
+            Destroy(gameObject);
+        }
+    }
 }
 
