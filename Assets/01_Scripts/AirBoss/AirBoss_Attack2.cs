@@ -36,6 +36,10 @@ public class AirBoss_Attack2 : StateMachineBehaviour
             }
             else
             {
+                if(currentPoint == 8)
+                {
+                    boss.Tornado();
+                }
 
                 //animator.transform.rotation = boss.PatrolPoints[currentPoint].newRotation;
                 animator.transform.Rotate(0, 0, 0);
@@ -45,19 +49,16 @@ public class AirBoss_Attack2 : StateMachineBehaviour
         }
         else
         {
-            if (spawn)
-            {
-                boss.Tornado();
-                spawn = false;
-            }
-           
+
+            boss.anim.SetBool("run", false);
+            boss.anim.SetBool("fly", true);
             if (timer <= 10)
             {
                 timer += Time.deltaTime;
             }
             else
             {
-                boss.anim.SetBool("run", false);
+                boss.anim.SetBool("fly", false);
                 boss.anim.SetBool("idle", true);
                 animator.SetTrigger("changeState");
             }
