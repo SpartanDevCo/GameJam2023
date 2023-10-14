@@ -34,4 +34,8 @@ public class PlayerAnimManager : MonoBehaviour
     public void ReturnNormal(){
         p.ReturnToNormal();
     }
+
+    public void ReturnCinematicNormal(){
+        p.ReturnCinematicNormal();
+    }
 }

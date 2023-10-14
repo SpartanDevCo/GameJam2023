@@ -8,6 +8,7 @@ public class Player : MonoBehaviour
     [Header("Atributos")]
     [SerializeField] float speed = 7;
     [SerializeField] float jumpSpeed = 7;
+    [SerializeField] float rayDistance = 10;
     public AttackType attackType = AttackType.Melee;
     float distanceToGround;
 
@@ -17,6 +18,7 @@ public class Player : MonoBehaviour
     [SerializeField] Transform spawnPoint;
     [SerializeField] GameObject slash;
     [SerializeField] GameObject waterBeam;
+    [SerializeField] LayerMask interactMask;
     
 
     [Header("Animaciones")]
@@ -34,6 +36,7 @@ public class Player : MonoBehaviour
         Move();
         Jump();
         Rotate();
+        SearchInteract();
         if(Input.GetMouseButtonDown(0)){SetAnimAttack();}
         
     }
@@ -68,6 +71,19 @@ public class Player : MonoBehaviour
         }
     }
 
+    void SearchInteract(){
+        UnityEngine.Debug.DrawRay(transform.position, transform.forward * rayDistance, Color.red);
+        RaycastHit hit;
+        if(Physics.Raycast(transform.position, transform.forward, out hit, rayDistance, interactMask) && Input.GetKeyDown(KeyCode.E)){
+            UnityEngine.Debug.Log("SE PUEDE INTERACTUAR");
+            anim.SetInteger("Cinematic",1);
+            hit.collider.GetComponent<Animator>().SetTrigger("Activate");
+        }
+    }
+
+    public void ReturnCinematicNormal(){
+        anim.SetInteger("Cinematic",0);
+    }
     public void SetAnimAttack(){
         switch (attackType)
         {
