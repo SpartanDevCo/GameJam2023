@@ -6,7 +6,7 @@ public class Enemy : MonoBehaviour
 {
     [Header("Atributos")]
     public float life = 3;
-    public float attackRange = 2f;
+    public float attackRange = 13f;
     bool targetInRange = false;
     [Header("Referencias")]
     public Rigidbody rb;
@@ -47,10 +47,11 @@ public class Enemy : MonoBehaviour
         transform.rotation = Quaternion.Euler(0, angleY, 0);
     }
 
-    public void TakeDamage(float damage){
-        life -= damage;
-        if (life <= 0){
-            Destroy(gameObject);
-        }
-    }
+    // public void TakeDamage(float damage){
+    //     life -= damage;
+    //     if (life <= 0){
+    //         Destroy(gameObject);
+    //     }
+    // }
 }
+
