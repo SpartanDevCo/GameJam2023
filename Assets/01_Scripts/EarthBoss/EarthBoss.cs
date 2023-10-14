@@ -7,12 +7,15 @@ public class EarthBoss : MonoBehaviour
     [Header("Atributos")]
     public float life = 500;
     public float timeBtwAttacks = 2f;
+    public float stopDistance = 10f;
+    public float distanceToPlayer;
 
     [Header("Referencias")]
     public Transform target;
     public GameObject rocks;
     public GameObject rainingRocks;
     [SerializeField] Transform spawnPoint;
+    public Animator anim;
 
     //[Header("Animaciones")]
     //public Animator animator;
@@ -27,7 +30,8 @@ public class EarthBoss : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        RotationTowardsPlayer();
+        distanceToPlayer = Vector3.Distance(transform.position, target.position);
     }
 
     public void RockAttack(){
@@ -75,5 +79,9 @@ public class EarthBoss : MonoBehaviour
         }
     }
 
-    
+    void RotationTowardsPlayer(){
+        Vector3 dir = target.position - transform.position;
+        float angleY = Mathf.Atan2(dir.x, dir.z) * Mathf.Rad2Deg + 0;
+        transform.rotation = Quaternion.Euler(0, angleY, 0);
+    }
 }

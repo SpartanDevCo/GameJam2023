@@ -72,7 +72,5 @@ public class ComboSystem : MonoBehaviour
         else{
             Instantiate(fireClaws, spawnClawsPoint.position, Quaternion.Euler(spawnClawsPoint.rotation.x, yAngle, deg));
         }
-        
-
     }
 }

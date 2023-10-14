@@ -11,13 +11,26 @@ public class AirBoss : MonoBehaviour
     public int life = 100;
     public Animator anim;
 
-    [Header("Attack 2")]
+    [Header("Alerta")]
+    public bool beAlert;
+    public float alertRange = 60;
+    public LayerMask playerLayer;
+  
+
+    [Header("Attack 1")]
     public Transform target;
     public Vector3 targetPosition;
     public float timeBtwShoot = 7f;
     public int bulletCount = 5;
     public GameObject bulletPrefab;
     public Transform firepoint;
+
+    [Header("Attack 2")]
+    public List<TargetInfo> PatrolPoints;
+    [SerializeField] Transform tornadoSpawnPoint;
+    [SerializeField] GameObject tornadoEffect;
+    public 
+
 
     void Start()
     {
@@ -30,24 +43,46 @@ public class AirBoss : MonoBehaviour
         
     }
 
-    #region
+    #region Attack 1
     public void LookAtPlayer()
     {
-        targetPosition = target.position;
-        Vector3 dir = targetPosition - transform.position;
-        float angleY = Mathf.Atan2(dir.x, dir.z) * Mathf.Rad2Deg + 180;
-        transform.rotation = Quaternion.Euler(0, angleY, 0);
+        // targetPosition = target.position;
+        // Vector3 dir = targetPosition - transform.position;
+        // float angleY = Mathf.Atan2(dir.x, dir.z) * Mathf.Rad2Deg + 180;
+        // transform.rotation = Quaternion.Euler(0, angleY, 0);
+        transform.LookAt(target);
     }
 
     public void Shoot()
-    {
-        float angleX = 0;
-        targetPosition = target.position;
-        Vector3 dir = targetPosition - transform.position;
-        angleX = Mathf.Atan2(dir.z, dir.y) * Mathf.Rad2Deg + 180;
-        Instantiate(bulletPrefab, firepoint.position,
-            Quaternion.Euler( -angleX, firepoint.rotation.y, firepoint.rotation.z));
-        Debug.Log(angleX);
+    {  
+        
+        // float angleX = 0;
+        // targetPosition = target.position;
+        // Vector3 dir = targetPosition - transform.position;
+        // angleX = Mathf.Atan2(dir.z, dir.y) * Mathf.Rad2Deg + 180;
+        // Instantiate(bulletPrefab, firepoint.position,
+        //     Quaternion.Euler( -angleX, firepoint.rotation.y, firepoint.rotation.z));
+        Instantiate(bulletPrefab, firepoint.position, firepoint.rotation);
+
     }
     #endregion
+
+    #region Attack 2
+
+    public void Tornado()
+    {
+        Instantiate(tornadoEffect, new Vector3(tornadoSpawnPoint.position.x, tornadoSpawnPoint.position.y - 6f, tornadoSpawnPoint.position.z), tornadoSpawnPoint.rotation);
+    }
+    #endregion
+
+
+    public void BeAlert()
+    {
+        beAlert = Physics.CheckSphere(transform.position, alertRange, playerLayer);
+    }
+     private void OnDrawGizmos()
+    {
+        Gizmos.color = Color.yellow;
+        Gizmos.DrawWireSphere(transform.position, alertRange);
+    }
 }
