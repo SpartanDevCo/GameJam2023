@@ -1,14 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
-using UnityEditor.ShaderGraph.Internal;
 using UnityEngine;
 
-public class AirBoss_Attack1 : StateMachineBehaviour
+public class AirBoss_Attack2 : StateMachineBehaviour
 {
     AirBoss boss;
-    int bulletCount;
+    public int currentPoint;
     float timer;
-    float initialY;
+ 
     // OnStateEnter is called when a transition starts and the state machine starts to evaluate this state
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
@@ -17,51 +16,56 @@ public class AirBoss_Attack1 : StateMachineBehaviour
             boss = animator.GetComponent<AirBoss>();
 
         }
-        bulletCount = boss.bulletCount;
+        currentPoint = 0;
         timer = 0;
-        initialY = animator.transform.position.y;
+        
     }
+
     // OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks
     override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        if(bulletCount > 0)
+        if (currentPoint <= 9)
         {
-           
-            if (animator.transform.position.y < 16.5f)
+            boss.anim.SetBool("run", true);
+            boss.anim.SetBool("idle", false);
+            float distance = Vector3.Distance(animator.transform.position, boss.PatrolPoints[currentPoint].target.position);
+
+            if (distance > 0.5f)
             {
-                boss.anim.SetBool("fly", true);
-                boss.anim.SetBool("idle", false);
-                animator.transform.Translate(0, 6 * Time.deltaTime, 0);
+                animator.transform.Translate(0, 0, 50 * Time.deltaTime);
             }
             else
             {
-                boss.LookAtPlayer();
-                if (timer < boss.timeBtwShoot)
+                if(currentPoint == 8)
                 {
-                    timer += Time.deltaTime;
+                    boss.Tornado();
                 }
-                else
-                {
-                    boss.Shoot();
-                    timer = 0;
-                    bulletCount--;
-                }
+
+                //animator.transform.rotation = boss.PatrolPoints[currentPoint].newRotation;
+                animator.transform.Rotate(0, 0, 0);
+                animator.transform.rotation = Quaternion.Euler(0, boss.PatrolPoints[currentPoint].newRotation.eulerAngles.y, 0);
+                currentPoint++;
             }
         }
         else
         {
-            if (animator.transform.position.y >= initialY)
+
+            boss.anim.SetBool("run", false);
+            boss.anim.SetBool("fly", true);
+            if (timer <= 10)
             {
-                animator.transform.Translate(0, -(6 * Time.deltaTime), 0);
+                timer += Time.deltaTime;
             }
             else
             {
-                animator.transform.rotation = Quaternion.Euler(0, 180, 0);
-                animator.SetInteger("attackType", 0);
-                animator.SetTrigger("changeState");
+
                 boss.anim.SetBool("fly", false);
                 boss.anim.SetBool("idle", true);
+                animator.SetTrigger("changeState");
             }
+
+            
+
         }
     }
 
@@ -82,4 +86,10 @@ public class AirBoss_Attack1 : StateMachineBehaviour
     //{
     //    // Implement code that sets up animation IK (inverse kinematics)
     //}
+}
+[System.Serializable]
+public class TargetInfo
+{
+    public Quaternion newRotation;
+    public Transform target;
 }
