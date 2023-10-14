@@ -7,7 +7,7 @@ public class AirBoss_Attack2 : StateMachineBehaviour
     AirBoss boss;
     public int currentPoint;
     float timer;
-    bool spawn;
+ 
     // OnStateEnter is called when a transition starts and the state machine starts to evaluate this state
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
@@ -18,7 +18,7 @@ public class AirBoss_Attack2 : StateMachineBehaviour
         }
         currentPoint = 0;
         timer = 0;
-        spawn = true;
+        
     }
 
     // OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks
@@ -32,7 +32,7 @@ public class AirBoss_Attack2 : StateMachineBehaviour
 
             if (distance > 0.5f)
             {
-                animator.transform.Translate(0, 0, -50 * Time.deltaTime);
+                animator.transform.Translate(0, 0, 50 * Time.deltaTime);
             }
             else
             {
@@ -58,6 +58,7 @@ public class AirBoss_Attack2 : StateMachineBehaviour
             }
             else
             {
+
                 boss.anim.SetBool("fly", false);
                 boss.anim.SetBool("idle", true);
                 animator.SetTrigger("changeState");
