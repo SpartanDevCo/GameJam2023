@@ -16,4 +16,10 @@ public class Slash : MonoBehaviour
     {
         transform.Translate(0,0,(speed * Time.deltaTime));
     }
+
+    void OnTriggerEnter(Collider other){
+        if(other.gameObject.tag == "Enemy"){
+            other.gameObject.GetComponent<IDamageable>().TakeDamage(1);
+        }
+    }
 }

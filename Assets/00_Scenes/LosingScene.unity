@@ -452,7 +452,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 2140971809}
         m_TargetAssemblyTypeName: MenusManager, Assembly-CSharp
         m_MethodName: MainMenu
         m_Mode: 1
@@ -793,7 +793,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 0}
+  m_audioClip: {fileID: 8300000, guid: c692249d157ca7c45ad2010a6af837fe, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1
@@ -1054,7 +1054,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 2140971809}
         m_TargetAssemblyTypeName: MenusManager, Assembly-CSharp
         m_MethodName: StartGame
         m_Mode: 1

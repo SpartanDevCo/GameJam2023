@@ -67,6 +67,5 @@ public class ComboSystem : MonoBehaviour
         // Instantiate(claws, spawnClawsPoint.position, Quaternion.Euler(spawnClawsPoint.rotation.x, transform.rotation.y * Mathf.Rad2Deg, deg));
         float yAngle = transform.rotation.eulerAngles.y;
         Instantiate(claws, spawnClawsPoint.position, Quaternion.Euler(spawnClawsPoint.rotation.x, yAngle, deg));
-
     }
 }
