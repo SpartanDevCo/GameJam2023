@@ -62,7 +62,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: c7fdec59415a68f4590ee9f35fb447c9, type: 2}
+  - {fileID: 2100000, guid: 0086a7ca2c7c2cf4182412e7b59b31f7, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -167,7 +167,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: c7fdec59415a68f4590ee9f35fb447c9, type: 2}
+  - {fileID: 2100000, guid: 0086a7ca2c7c2cf4182412e7b59b31f7, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -272,7 +272,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: c7fdec59415a68f4590ee9f35fb447c9, type: 2}
+  - {fileID: 2100000, guid: 0086a7ca2c7c2cf4182412e7b59b31f7, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -326,7 +326,7 @@ GameObject:
   - component: {fileID: 8358682292622560402}
   - component: {fileID: 7569385492542602348}
   m_Layer: 0
-  m_Name: Claws
+  m_Name: Fire
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
