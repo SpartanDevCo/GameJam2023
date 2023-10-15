@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7231527966416187225}
   - component: {fileID: 2274155890449120656}
+  - component: {fileID: 7580613539592974684}
   m_Layer: 0
   m_Name: RockyAttack
   m_TagString: Untagged
@@ -54,6 +55,19 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &7580613539592974684
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2745985064960132503}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2390214088939d34393601b626790374, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rockEffect: {fileID: 7342966777550959169, guid: eac439c7be219d649a40dde059991077, type: 3}
 --- !u!1 &4596638474687804277
 GameObject:
   m_ObjectHideFlags: 0
