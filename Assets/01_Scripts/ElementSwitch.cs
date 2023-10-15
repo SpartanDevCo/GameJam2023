@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class ElementSwitch : MonoBehaviour
 {
@@ -15,6 +16,13 @@ public class ElementSwitch : MonoBehaviour
     [Header("Referencias")]
     [SerializeField] Material material;
     [SerializeField] ParticleSystem par;
+
+     [Header("UI")]
+     [SerializeField] GameObject  e0;
+     [SerializeField] GameObject  e1;
+     [SerializeField] GameObject  e2;
+     [SerializeField] GameObject  e3;
+     [SerializeField] GameObject  e4;
     void Start()
     {
         p = GetComponent<Player>();
@@ -67,22 +75,47 @@ public class ElementSwitch : MonoBehaviour
             case Player.AttackType.Rock:
                 particle.startColor = new ParticleSystem.MinMaxGradient(new Color(186,191,0));
                 ChangeColor(new Color(186,191,0));
+                e0.SetActive(false);
+                e1.SetActive(true);
+                e2.SetActive(false);
+                e3.SetActive(false);
+                e4.SetActive(false);
                 break;
             case Player.AttackType.Wind:
                 particle.startColor = new ParticleSystem.MinMaxGradient(new Color(0,255,0));
                 ChangeColor(new Color(0,255,0));
+                e0.SetActive(false);
+                e1.SetActive(false);
+                e2.SetActive(true);
+                e3.SetActive(false);
+                e4.SetActive(false);
                 break;
             case Player.AttackType.Water:
                 particle.startColor = new ParticleSystem.MinMaxGradient(new Color(0,162,191));
                 ChangeColor(new Color(0,162,191));
+                e0.SetActive(false);
+                e1.SetActive(false);
+                e2.SetActive(false);
+                e3.SetActive(true);
+                e4.SetActive(false);
                 break;
             case Player.AttackType.Fire:
                 particle.startColor = new ParticleSystem.MinMaxGradient(new Color(255,0,0));
                 ChangeColor(new Color(255,0,0));
+                e0.SetActive(false);
+                e1.SetActive(false);
+                e2.SetActive(false);
+                e3.SetActive(false);
+                e4.SetActive(true);
                 break;
             case Player.AttackType.Melee:
                 particle.startColor = new ParticleSystem.MinMaxGradient(new Color(255,255,255));
                 ChangeColor(new Color(255,255,255));
+                e0.SetActive(true);
+                e1.SetActive(false);
+                e2.SetActive(false);
+                e3.SetActive(false);
+                e4.SetActive(false);
                 break;
         }
         Instantiate(par,transform.position,transform.rotation);
