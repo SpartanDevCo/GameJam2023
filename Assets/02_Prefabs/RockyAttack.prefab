@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 7231527966416187225}
   - component: {fileID: 2274155890449120656}
   - component: {fileID: 7580613539592974684}
+  - component: {fileID: 183751440325247932}
   m_Layer: 0
   m_Name: RockyAttack
   m_TagString: Untagged
@@ -67,7 +68,29 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2390214088939d34393601b626790374, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  damage: 2
   rockEffect: {fileID: 7342966777550959169, guid: eac439c7be219d649a40dde059991077, type: 3}
+--- !u!65 &183751440325247932
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2745985064960132503}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 3.1164794, y: 1.5382551, z: 7.205123}
+  m_Center: {x: -0.20178127, y: 0.26912597, z: 3.1025405}
 --- !u!1 &4596638474687804277
 GameObject:
   m_ObjectHideFlags: 0
