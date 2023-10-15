@@ -4,20 +4,18 @@ using UnityEngine;
 
 public class ComboSystem : MonoBehaviour
 {
-
-    Animator animator;
     int click_quantity;
     bool canClick;
 
     [Header("Referencias")]
+    [SerializeField] Animator animator;
     [SerializeField] Transform spawnClawsPoint;
     [SerializeField] GameObject claws;
-
+    [SerializeField] GameObject fireClaws;
     [SerializeField] Player p;
     // Start is called before the first frame update
     void Start()
     {
-        animator = GetComponent<Animator>();
         p = GetComponent<Player>();
         click_quantity = 0;
         canClick = true;
@@ -68,7 +66,11 @@ public class ComboSystem : MonoBehaviour
     public void SpawnClaws(float deg){
         // Instantiate(claws, spawnClawsPoint.position, Quaternion.Euler(spawnClawsPoint.rotation.x, transform.rotation.y * Mathf.Rad2Deg, deg));
         float yAngle = transform.rotation.eulerAngles.y;
-        Instantiate(claws, spawnClawsPoint.position, Quaternion.Euler(spawnClawsPoint.rotation.x, yAngle, deg));
-
+        if(p.attackType == Player.AttackType.Melee){
+            Instantiate(claws, spawnClawsPoint.position, Quaternion.Euler(spawnClawsPoint.rotation.x, yAngle, deg));
+        }
+        else{
+            Instantiate(fireClaws, spawnClawsPoint.position, Quaternion.Euler(spawnClawsPoint.rotation.x, yAngle, deg));
+        }
     }
 }

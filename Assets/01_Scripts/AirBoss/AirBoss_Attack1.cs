@@ -27,7 +27,7 @@ public class AirBoss_Attack1 : StateMachineBehaviour
         if(bulletCount > 0)
         {
            
-            if (animator.transform.position.y < 15f)
+            if (animator.transform.position.y < 16.5f)
             {
                 boss.anim.SetBool("fly", true);
                 boss.anim.SetBool("idle", false);
@@ -56,7 +56,7 @@ public class AirBoss_Attack1 : StateMachineBehaviour
             }
             else
             {
-
+                animator.transform.rotation = Quaternion.Euler(0, 180, 0);
                 animator.SetInteger("attackType", 0);
                 animator.SetTrigger("changeState");
                 boss.anim.SetBool("fly", false);

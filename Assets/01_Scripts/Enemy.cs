@@ -2,11 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Enemy : MonoBehaviour
+public class Enemy : MonoBehaviour,IDamageable
 {
     [Header("Atributos")]
     public float life = 3;
-    public float attackRange = 2f;
+    public float attackRange = 13f;
     bool targetInRange = false;
     [Header("Referencias")]
     public Rigidbody rb;
@@ -49,8 +49,11 @@ public class Enemy : MonoBehaviour
 
     public void TakeDamage(float damage){
         life -= damage;
+        Debug.Log("Enemy life: " + life);
         if (life <= 0){
+            
             Destroy(gameObject);
         }
     }
 }
+

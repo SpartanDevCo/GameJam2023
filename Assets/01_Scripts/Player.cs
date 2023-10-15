@@ -8,6 +8,7 @@ public class Player : MonoBehaviour
     [Header("Atributos")]
     [SerializeField] float speed = 7;
     [SerializeField] float jumpSpeed = 7;
+    [SerializeField] float rayDistance = 10;
     public AttackType attackType = AttackType.Melee;
     float distanceToGround;
 
@@ -16,6 +17,9 @@ public class Player : MonoBehaviour
     [SerializeField] GameObject rocks;
     [SerializeField] Transform spawnPoint;
     [SerializeField] GameObject slash;
+    [SerializeField] GameObject waterBeam;
+    [SerializeField] LayerMask interactMask;
+    
 
     [Header("Animaciones")]
     public Animator anim;
@@ -32,7 +36,8 @@ public class Player : MonoBehaviour
         Move();
         Jump();
         Rotate();
-        if(Input.GetMouseButtonDown(0)){Attack();}
+        SearchInteract();
+        if(Input.GetMouseButtonDown(0)){SetAnimAttack();}
         
     }
 
@@ -66,7 +71,35 @@ public class Player : MonoBehaviour
         }
     }
 
-    void Attack(){
+    void SearchInteract(){
+        UnityEngine.Debug.DrawRay(transform.position, transform.forward * rayDistance, Color.red);
+        RaycastHit hit;
+        if(Physics.Raycast(transform.position, transform.forward, out hit, rayDistance, interactMask) && Input.GetKeyDown(KeyCode.E)){
+            UnityEngine.Debug.Log("SE PUEDE INTERACTUAR");
+            anim.SetInteger("Cinematic",1);
+            hit.collider.GetComponent<Animator>().SetTrigger("Activate");
+        }
+    }
+
+    public void ReturnCinematicNormal(){
+        anim.SetInteger("Cinematic",0);
+    }
+    public void SetAnimAttack(){
+        switch (attackType)
+        {
+            case AttackType.Rock:
+                anim.SetInteger("Special",1);
+                break;
+            case AttackType.Wind:
+                anim.SetInteger("Special",2);
+                break;
+            case AttackType.Water:
+                anim.SetInteger("Special",3);
+                break;
+        }
+    }
+
+    public void Attack(){
         switch (attackType)
         {
             case AttackType.Rock:
@@ -75,7 +108,14 @@ public class Player : MonoBehaviour
             case AttackType.Wind:
                 AirAttack();
                 break;
+            case AttackType.Water:
+                WaterAttack();
+                break;
         }
+    }
+
+    public void ReturnToNormal(){
+        anim.SetInteger("Special",0);
     }
 
     void RockAttack(){
@@ -96,6 +136,10 @@ public class Player : MonoBehaviour
 
     void AirAttack(){
         Instantiate(slash,spawnPoint.position + transform.forward *2, Quaternion.Euler(transform.rotation.eulerAngles.x, transform.rotation.eulerAngles.y  + 180f, transform.rotation.eulerAngles.z));
+    }
+
+    void WaterAttack(){
+        Instantiate(waterBeam,spawnPoint.position, Quaternion.Euler(transform.rotation.eulerAngles.x, transform.rotation.eulerAngles.y, transform.rotation.eulerAngles.z));
     }
 
 
