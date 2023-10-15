@@ -3,13 +3,15 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using UnityEngine;
 
-public class Player : MonoBehaviour
+public class Player : MonoBehaviour,IDamageable
 {
     [Header("Atributos")]
+    [SerializeField] float hp = 100;
     [SerializeField] float speed = 7;
     [SerializeField] float jumpSpeed = 7;
     [SerializeField] float rayDistance = 10;
     public AttackType attackType = AttackType.Melee;
+    public List<AttackType> availableAttacks = new List<AttackType>(){AttackType.Melee};
     float distanceToGround;
 
     [Header("Referencias")]
@@ -63,10 +65,14 @@ public class Player : MonoBehaviour
         return Physics.BoxCast(transform.position, new Vector3(0.4f, 0f, 0.4f),Vector3.down, Quaternion.identity, distanceToGround + 0.3f);
     }
 
+    public void RestoreJump(){
+        anim.SetTrigger("Jumping");
+    }
     
     void Jump(){
         
         if(Input.GetKeyDown(KeyCode.Space) && IsGrounded()){
+            anim.SetBool("Jumping",true);
             rb.AddForce(Vector3.up * jumpSpeed, ForceMode.Impulse);
         }
     }
@@ -142,6 +148,14 @@ public class Player : MonoBehaviour
         Instantiate(waterBeam,spawnPoint.position, Quaternion.Euler(transform.rotation.eulerAngles.x, transform.rotation.eulerAngles.y, transform.rotation.eulerAngles.z));
     }
 
+    public void TakeDamage(float damage)
+    {
+        hp-=damage;
+        UnityEngine.Debug.Log("DAÑO AL JUGADOR HP= " + hp);
+        if(hp<=0){
+            
+        }
+    }
 
     public enum AttackType{
         Melee,
