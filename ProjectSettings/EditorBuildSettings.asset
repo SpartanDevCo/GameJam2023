@@ -5,16 +5,19 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
-  - enabled: 1
+  - enabled: 0
     path: Assets/00_Scenes/MenuPrincipal.unity
     guid: 2bb1779f646098e4ea4788bba099a1ef
-  - enabled: 1
+  - enabled: 0
     path: Assets/00_Scenes/Game.unity
     guid: 9fc0d4010bbf28b4594072e72b8655ab
-  - enabled: 1
+  - enabled: 0
     path: Assets/00_Scenes/LosingScene.unity
     guid: bc1b16980b91ac640b82c404c3443654
-  - enabled: 1
+  - enabled: 0
     path: Assets/00_Scenes/WinningScene.unity
     guid: 42e6436b05df9464d8d27403e528cc04
+  - enabled: 1
+    path: Assets/00_Scenes/Fernando.unity
+    guid: 1f0d41050f5dbdc498687604e960d747
   m_configObjects: {}
