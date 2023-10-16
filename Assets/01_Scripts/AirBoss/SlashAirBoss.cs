@@ -16,4 +16,12 @@ public class SlashAirBoss : MonoBehaviour
     {
         transform.Translate(0, 0, (speed * Time.deltaTime));
     }
+    private void OnCollisionEnter(Collision other)
+    {
+        if (other.gameObject.tag == "Player")
+        {
+            other.gameObject.GetComponent<IDamageable>().TakeDamage(10);
+            Destroy(gameObject);
+        }
+    }
 }

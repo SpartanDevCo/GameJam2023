@@ -6,12 +6,14 @@ using UnityEngine;
 public class TornadoAirBoss : MonoBehaviour
 {
     // Start is called before the first frame update
+    bool damage;
     int speed = 5;
     Transform target;
     void Start()
     {
         target = GameObject.FindGameObjectWithTag("Player").transform;
         Destroy(gameObject, 10);
+        damage = true;
     }
 
     // Update is called once per frame
@@ -29,5 +31,14 @@ public class TornadoAirBoss : MonoBehaviour
     void Move()
     {
         transform.Translate(0, (speed * Time.deltaTime), 0);
+    }
+    private void OnCollisionEnter(Collision other)
+    {
+        if (other.gameObject.tag == "Player" && damage)
+        {
+            other.gameObject.GetComponent<IDamageable>().TakeDamage(20);
+            Destroy(gameObject);
+            damage = false;
+        }
     }
 }
