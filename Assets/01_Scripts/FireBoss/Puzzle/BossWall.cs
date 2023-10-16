@@ -2,12 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class AttackOne : MonoBehaviour
+public class BossWall : MonoBehaviour
 {
+    float puzzleWall = 0;
     // Start is called before the first frame update
     void Start()
     {
-        Destroy(gameObject, 5);
+        
     }
 
     // Update is called once per frame
@@ -16,10 +17,11 @@ public class AttackOne : MonoBehaviour
         
     }
 
-    private void OnCollisionEnter(Collision other) {
-        if(other.gameObject.tag == "Player"){
-            other.gameObject.GetComponent<IDamageable>().TakeDamage(10);
+    public void PuzzleWall(){
+        puzzleWall += 1;
+        if(puzzleWall >= 2){
             Destroy(gameObject);
+            Debug.Log("Pared Destruida");
         }
     }
 }

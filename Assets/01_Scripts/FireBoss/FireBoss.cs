@@ -5,9 +5,10 @@ using UnityEngine.UI;
 using Cinemachine;
 using UnityEngine.SceneManagement;
 
-public class FireBoss : MonoBehaviour
+public class FireBoss : MonoBehaviour,IDamageable
 {
-    public Transform effectPoint;
+    float life = 100;
+    public Transform attack2Point;
     [Header("Referencias")]
     [SerializeField] GameObject rockEffect;
     public static float hp;
@@ -49,9 +50,17 @@ public class FireBoss : MonoBehaviour
 
     }
 
+    public void TakeDamage(float damage){
+        life -= damage;
+        Debug.Log("Boss life: " + life);
+        if (life <= 0){
+            Destroy(gameObject);
+        }
+    }
+
     public void WaveAttack()
     {
-        Instantiate(wave, new Vector3(effectPoint.position.x, effectPoint.position.y, effectPoint.position.z), Quaternion.Euler(0, 0, 0));
+        Instantiate(wave, new Vector3(attack2Point.position.x, attack2Point.position.y, attack2Point.position.z), Quaternion.Euler(0, 0, 0));
     }
 
     public void AttackOne()
@@ -87,7 +96,7 @@ public class FireBoss : MonoBehaviour
     }
     public void InstantiateRockEffect()
     {
-        Instantiate(rockEffect, new Vector3(effectPoint.position.x, effectPoint.position.y + 5, effectPoint.position.z), effectPoint.rotation);
+        Instantiate(rockEffect, new Vector3(attack2Point.position.x, attack2Point.position.y + 5, attack2Point.position.z), attack2Point.rotation);
     }
     private void OnDrawGizmos()
     {
