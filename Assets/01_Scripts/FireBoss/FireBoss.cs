@@ -60,7 +60,8 @@ public class FireBoss : MonoBehaviour,IDamageable
 
     public void WaveAttack()
     {
-        Instantiate(wave, new Vector3(attack2Point.position.x, attack2Point.position.y, attack2Point.position.z), Quaternion.Euler(0, 0, 0));
+        Quaternion newRotation = Quaternion.Euler(attack2Point.rotation.eulerAngles.x, attack2Point.rotation.eulerAngles.y + 90, attack2Point.rotation.eulerAngles.z);
+        Instantiate(wave, new Vector3(attack2Point.position.x, attack2Point.position.y, attack2Point.position.z), newRotation);
     }
 
     public void AttackOne()
