@@ -49,7 +49,7 @@ public class Player : MonoBehaviour,IDamageable
             SearchInteract();
             if(Input.GetMouseButtonDown(0)){SetAnimAttack();}
         }
-        heathbar.value = hp;
+        
         
         
     }
@@ -173,6 +173,7 @@ public class Player : MonoBehaviour,IDamageable
     {
         if(!dead){
             hp-=damage;
+            heathbar.value = hp;
             UnityEngine.Debug.Log("DAÑO AL JUGADOR HP= " + hp);
             if(hp<=0){
                 dead = true;
