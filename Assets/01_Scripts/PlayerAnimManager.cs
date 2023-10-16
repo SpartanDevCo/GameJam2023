@@ -31,6 +31,13 @@ public class PlayerAnimManager : MonoBehaviour
         SceneManager.LoadScene("LosingScene");
     }
 
+    public void ChangeAnimInProgress(int setAnim){
+        if(setAnim ==1)
+            p.ChangeAnimInProgress(true);
+        else if(setAnim == 0)
+            p.ChangeAnimInProgress(false);
+    }
+
     public void Attack(){
         p.Attack();
     }

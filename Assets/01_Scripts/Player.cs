@@ -13,6 +13,7 @@ public class Player : MonoBehaviour,IDamageable
     public AttackType attackType = AttackType.Melee;
     public List<AttackType> availableAttacks = new List<AttackType>(){AttackType.Melee};
     bool dead = false;
+    bool animationInProgress = false;
     float distanceToGround;
 
     [Header("Referencias")]
@@ -25,6 +26,7 @@ public class Player : MonoBehaviour,IDamageable
     [SerializeField] LayerMask fireI;
     [SerializeField] LayerMask waterI;
     [SerializeField] LayerMask windI;
+    [SerializeField] ParticleSystem energy;
     
 
     [Header("Animaciones")]
@@ -39,8 +41,9 @@ public class Player : MonoBehaviour,IDamageable
     // Update is called once per frame
     void Update()
     {
-        if(!dead){
+        if(!dead && !animationInProgress){
             Move();
+            ControlDash();
             Jump();
             Rotate();
             SearchInteract();
@@ -56,6 +59,15 @@ public class Player : MonoBehaviour,IDamageable
         float z = Input.GetAxis("Vertical");
         anim.SetFloat("run", Mathf.Abs(x + z));
         transform.Translate(x * Time.deltaTime * speed, 0, z * Time.deltaTime * speed);
+    }
+
+    void ControlDash(){
+        if(Input.GetKeyDown(KeyCode.LeftShift)){
+            speed *= 1.5f;
+        }
+        if(Input.GetKeyUp(KeyCode.LeftShift)){
+            speed /= 1.5f;
+        }
     }
 
     void Rotate(){
@@ -84,24 +96,36 @@ public class Player : MonoBehaviour,IDamageable
         }
     }
 
+    public void ChangeAnimInProgress(bool value){
+        animationInProgress = value;
+    }
+
     void SearchInteract(){
         UnityEngine.Debug.DrawRay(transform.position, transform.forward * rayDistance, Color.red);
         RaycastHit hit;
+        var particle = energy.main;
         if(Physics.Raycast(transform.position, transform.forward, out hit, rayDistance, fireI) && Input.GetKeyDown(KeyCode.E) && availableAttacks.Contains(AttackType.Water)){
             UnityEngine.Debug.Log("SE PUEDE INTERACTUAR");
+            particle.startColor = new ParticleSystem.MinMaxGradient(new Color(0,162,191));
             anim.SetInteger("Cinematic",1);
             hit.collider.GetComponent<Animator>().SetTrigger("Activate");
+            Instantiate(energy,spawnPoint.position,Quaternion.Euler(-20,0,0));
         }
         if(Physics.Raycast(transform.position, transform.forward, out hit, rayDistance, windI) && Input.GetKeyDown(KeyCode.E) && availableAttacks.Contains(AttackType.Rock)){
             UnityEngine.Debug.Log("SE PUEDE INTERACTUAR");
+            particle.startColor = new ParticleSystem.MinMaxGradient(new Color(186,191,0));
             anim.SetInteger("Cinematic",1);
             hit.collider.GetComponent<Animator>().SetTrigger("Activate");
+            Instantiate(energy,spawnPoint.position,Quaternion.Euler(-20,0,0));
         }
         if(Physics.Raycast(transform.position, transform.forward, out hit, rayDistance, waterI) && Input.GetKeyDown(KeyCode.E) && availableAttacks.Contains(AttackType.Wind)){
             UnityEngine.Debug.Log("SE PUEDE INTERACTUAR");
+            particle.startColor = new ParticleSystem.MinMaxGradient(new Color(0,255,0));
             anim.SetInteger("Cinematic",1);
             hit.collider.GetComponent<Animator>().SetTrigger("Activate");
+            Instantiate(energy,spawnPoint.position,Quaternion.Euler(-20,0,0));
         }
+        
     }
 
     public void ReturnCinematicNormal(){

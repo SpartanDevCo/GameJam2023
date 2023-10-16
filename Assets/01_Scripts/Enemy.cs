@@ -77,13 +77,18 @@ public class Enemy : MonoBehaviour,IDamageable
         anim.SetFloat("speed",1);
     }
 
+    
+
     public void TakeDamage(float damage){
-        life -= damage;
-        Debug.Log("Enemy life: " + life);
-        if (life <= 0){
-            dead = true;
-            anim.SetTrigger("Dead");
+        if(!dead){
+            life -= damage;
+            Debug.Log("Enemy life: " + life);
+            if (life <= 0){
+                dead = true;
+                anim.SetTrigger("Dead");
+            }
         }
+        
     }
 
     public void Destroyer(){

@@ -39446,7 +39446,7 @@ AnimationClip:
     floatParameter: 140
     intParameter: 0
     messageOptions: 0
-  - time: 1.1666666
+  - time: 1.3333334
     functionName: VerifyCombo
     data: 
     objectReferenceParameter: {fileID: 0}
