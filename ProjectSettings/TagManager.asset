@@ -7,6 +7,11 @@ TagManager:
   - Boss
   - Enemy
   - Pilar
+  - WaterCollectible
+  - Portal
+  - AirSlash
+  - Water
+  - RockAttack
   layers:
   - Default
   - TransparentFX
