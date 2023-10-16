@@ -2,10 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SharkDamage : MonoBehaviour
+public class SharkDamage : MonoBehaviour,IDamageable
 {
-    public int maxHealth = 100;
-    private int currentHealth;
+    public float maxHealth = 100;
+    private float currentHealth;
     public GameObject finalObject;
 
     private void Start()
@@ -21,12 +21,13 @@ public class SharkDamage : MonoBehaviour
         }
     }
 
-    public void TakeDamage(int damage)
+    public void TakeDamage(float damage)
     {
         currentHealth -= damage;
 
         if (currentHealth <= 0)
         {
+            
             Die();
         }
     }
@@ -34,6 +35,8 @@ public class SharkDamage : MonoBehaviour
     private void Die()
     {
         // Implement death behavior here, like playing an animation, destroying the shark object, or triggering any other actions.
+        Player p = GameObject.FindWithTag("Player").GetComponent<Player>();
+        p.availableAttacks.Add(Player.AttackType.Water);
         Destroy(gameObject);
         finalObject.SetActive(true);
         

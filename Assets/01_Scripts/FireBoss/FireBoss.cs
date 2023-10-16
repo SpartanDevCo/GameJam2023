@@ -54,6 +54,8 @@ public class FireBoss : MonoBehaviour,IDamageable
         life -= damage;
         Debug.Log("Boss life: " + life);
         if (life <= 0){
+            Player p = GameObject.FindWithTag("Player").GetComponent<Player>();
+            p.availableAttacks.Add(Player.AttackType.Fire);
             Destroy(gameObject);
         }
     }

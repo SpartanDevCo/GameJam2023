@@ -100,6 +100,8 @@ public class AirBoss : MonoBehaviour, IDamageable
         else
         {
             death= true;
+            Player p = GameObject.FindWithTag("Player").GetComponent<Player>();
+            p.availableAttacks.Add(Player.AttackType.Wind);
         }
     }
 }
