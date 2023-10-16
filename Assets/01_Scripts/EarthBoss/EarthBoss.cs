@@ -2,10 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EarthBoss : MonoBehaviour
+public class EarthBoss : MonoBehaviour, IDamageable
 {
     [Header("Atributos")]
-    public float life = 500;
+    public float life = 100;
     public float timeBtwAttacks = 2f;
     public float stopDistance = 10f;
     public float distanceToPlayer;
@@ -15,6 +15,7 @@ public class EarthBoss : MonoBehaviour
     public GameObject rocks;
     public GameObject rainingRocks;
     [SerializeField] Transform spawnPoint;
+    [SerializeField] Transform spawnPoint2;
     public Animator anim;
 
     //[Header("Animaciones")]
@@ -52,18 +53,14 @@ public class EarthBoss : MonoBehaviour
 
     public void RainingRocksAttack(){
         RaycastHit hit;
-        if (Physics.Raycast(spawnPoint.position, Vector3.down, out hit))
+        if (Physics.Raycast(spawnPoint2.position, Vector3.down, out hit))
         {
             // Verifica si el rayo golpea algo
             if (hit.collider != null)
             {
                 // La posición del suelo donde el rayo golpea
-                Vector3 groundPosition = hit.point;
-                GameObject rainingRock = Instantiate(rainingRocks, groundPosition, Quaternion.identity);
-
-                // Mover la roca hacia arriba, por encima del jefe
-                Vector3 bossTop = new Vector3(transform.position.x, transform.position.y + 5, transform.position.z);
-                rainingRock.transform.position = bossTop;
+                //Vector3 groundPosition = hit.point;
+                GameObject rainingRock = Instantiate(rainingRocks, spawnPoint2.position, Quaternion.identity);
 
                 // Apuntar la roca hacia el jugador
                 Vector3 directionToPlayer = (target.position - rainingRock.transform.position).normalized;
@@ -73,7 +70,7 @@ public class EarthBoss : MonoBehaviour
                 Rigidbody rockRb = rainingRock.GetComponent<Rigidbody>();
                 if (rockRb != null)
                 {
-                    rockRb.AddForce(directionToPlayer * 10, ForceMode.Impulse);
+                    rockRb.AddForce(directionToPlayer * 40, ForceMode.Impulse);
                 }
             }
         }
@@ -83,5 +80,15 @@ public class EarthBoss : MonoBehaviour
         Vector3 dir = target.position - transform.position;
         float angleY = Mathf.Atan2(dir.x, dir.z) * Mathf.Rad2Deg + 0;
         transform.rotation = Quaternion.Euler(0, angleY, 0);
+    }
+
+    public void TakeDamage(float damage){
+        life -= damage;
+        Debug.Log("EarthBoss life: " + life);
+        if (life <= 0){
+            //animator.SetBool("isDead", true);
+            anim.SetBool("dying", true);
+            Destroy(gameObject, 5f);
+        }
     }
 }
