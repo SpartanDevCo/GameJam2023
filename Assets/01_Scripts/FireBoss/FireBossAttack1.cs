@@ -23,7 +23,7 @@ public class FireBossAttack1 : StateMachineBehaviour
     override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
         timer += Time.deltaTime;
-        if (timer > 1)
+        if (timer > 2)
         {
             boss.InstantiateRockEffect();
             if(!attack){
