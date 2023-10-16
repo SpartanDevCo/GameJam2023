@@ -5,10 +5,10 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
-  - enabled: 0
+  - enabled: 1
     path: Assets/00_Scenes/MenuPrincipal.unity
     guid: 2bb1779f646098e4ea4788bba099a1ef
-  - enabled: 0
+  - enabled: 1
     path: Assets/00_Scenes/Game.unity
     guid: 9fc0d4010bbf28b4594072e72b8655ab
   - enabled: 1
@@ -20,7 +20,7 @@ EditorBuildSettings:
   - enabled: 0
     path: Assets/00_Scenes/Fernando.unity
     guid: 1f0d41050f5dbdc498687604e960d747
-  - enabled: 1
+  - enabled: 0
     path: Assets/00_Scenes/Luna.unity
     guid: 51b0423780fa683448cee897aa7c7aa1
   m_configObjects: {}

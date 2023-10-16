@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Diagnostics;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Player : MonoBehaviour,IDamageable
 {
@@ -15,6 +16,7 @@ public class Player : MonoBehaviour,IDamageable
     bool dead = false;
     bool animationInProgress = false;
     float distanceToGround;
+    public Slider heathbar;
 
     [Header("Referencias")]
     [SerializeField] Rigidbody rb;
@@ -34,6 +36,7 @@ public class Player : MonoBehaviour,IDamageable
     // Start is called before the first frame update
     void Start()
     {
+        heathbar.maxValue = 100;
         distanceToGround = GetComponent<Collider>().bounds.extents.y;
     }
 
@@ -49,6 +52,7 @@ public class Player : MonoBehaviour,IDamageable
             SearchInteract();
             if(Input.GetMouseButtonDown(0)){SetAnimAttack();}
         }
+        
         
         
     }
@@ -193,6 +197,7 @@ public class Player : MonoBehaviour,IDamageable
     {
         if(!dead){
             hp-=damage;
+            heathbar.value = hp;
             UnityEngine.Debug.Log("DAÑO AL JUGADOR HP= " + hp);
             if(hp<=0){
                 dead = true;

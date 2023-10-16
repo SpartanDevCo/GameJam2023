@@ -27,6 +27,9 @@ public class RockyAttack : MonoBehaviour
             other.gameObject.GetComponent<Rigidbody>().AddForce(Vector3.up, ForceMode.Impulse);
         }else if(other.gameObject.tag == "Boss"){
             other.gameObject.GetComponent<IDamageable>().TakeDamage(damage);
+        }else if(other.gameObject.tag == "Player"){
+            Destroy(gameObject);
+            other.gameObject.GetComponent<IDamageable>().TakeDamage(damage);
         }
     }
 
