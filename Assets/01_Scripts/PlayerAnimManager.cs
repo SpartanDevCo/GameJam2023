@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PlayerAnimManager : MonoBehaviour
 {
@@ -25,6 +26,9 @@ public class PlayerAnimManager : MonoBehaviour
 
     public void SpawnClaws(float deg){
         comb.SpawnClaws(deg);
+    }
+    public void Lose(){
+        SceneManager.LoadScene("LosingScene");
     }
 
     public void Attack(){
