@@ -12,6 +12,7 @@ public class Player : MonoBehaviour,IDamageable
     [SerializeField] float rayDistance = 10;
     public AttackType attackType = AttackType.Melee;
     public List<AttackType> availableAttacks = new List<AttackType>(){AttackType.Melee};
+    bool dead = false;
     float distanceToGround;
 
     [Header("Referencias")]
@@ -35,11 +36,14 @@ public class Player : MonoBehaviour,IDamageable
     // Update is called once per frame
     void Update()
     {
-        Move();
-        Jump();
-        Rotate();
-        SearchInteract();
-        if(Input.GetMouseButtonDown(0)){SetAnimAttack();}
+        if(!dead){
+            Move();
+            Jump();
+            Rotate();
+            SearchInteract();
+            if(Input.GetMouseButtonDown(0)){SetAnimAttack();}
+        }
+        
         
     }
 
@@ -150,11 +154,15 @@ public class Player : MonoBehaviour,IDamageable
 
     public void TakeDamage(float damage)
     {
-        hp-=damage;
-        UnityEngine.Debug.Log("DAÑO AL JUGADOR HP= " + hp);
-        if(hp<=0){
-            
+        if(!dead){
+            hp-=damage;
+            UnityEngine.Debug.Log("DAÑO AL JUGADOR HP= " + hp);
+            if(hp<=0){
+                dead = true;
+                anim.SetTrigger("Dead");
+            }
         }
+        
     }
 
     public enum AttackType{
