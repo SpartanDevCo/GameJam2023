@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class AirBoss : MonoBehaviour, IDamageable
 {
@@ -10,6 +11,7 @@ public class AirBoss : MonoBehaviour, IDamageable
     public float maxWaitTime = 10;
     public int life = 100;
     public Animator anim;
+    public Slider lifebar;
 
     [Header("Alerta")]
     public bool beAlert;
@@ -34,7 +36,8 @@ public class AirBoss : MonoBehaviour, IDamageable
 
     void Start()
     {
-        
+        lifebar.maxValue = 100;
+        lifebar.value = 100;
     }
 
     // Update is called once per frame

@@ -2206,7 +2206,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &317957661
 RectTransform:
   m_ObjectHideFlags: 0
@@ -2214,17 +2214,16 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 317957660}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 1100127335}
-  m_Father: {fileID: 633852090}
+  m_Children: []
+  m_Father: {fileID: 1100127335}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -61, y: -468.76}
+  m_AnchoredPosition: {x: -39.831177, y: 24.578003}
   m_SizeDelta: {x: 1585.8259, y: 142.4798}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &317957662
@@ -2589,12 +2588,12 @@ GameObject:
   - component: {fileID: 387621678}
   - component: {fileID: 387621679}
   m_Layer: 5
-  m_Name: Slider
+  m_Name: FireLifebar
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &387621678
 RectTransform:
   m_ObjectHideFlags: 0
@@ -2607,14 +2606,15 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 2074839187}
   - {fileID: 1127878787}
   - {fileID: 1158641469}
   - {fileID: 331933592}
-  m_Father: {fileID: 2074839187}
+  m_Father: {fileID: 633852090}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 39.831177, y: -24.578}
+  m_AnchoredPosition: {x: -21.168823, y: -493.338}
   m_SizeDelta: {x: 1198.6262, y: 49.157}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &387621679
@@ -3499,11 +3499,11 @@ RectTransform:
   - {fileID: 111721261}
   - {fileID: 1875021967}
   - {fileID: 963802239}
-  - {fileID: 792622725}
-  - {fileID: 317957661}
-  - {fileID: 668125373}
-  - {fileID: 2074839187}
   - {fileID: 1735780819}
+  - {fileID: 1100127335}
+  - {fileID: 1893914066}
+  - {fileID: 1306867320}
+  - {fileID: 387621678}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
@@ -3662,7 +3662,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &668125373
 RectTransform:
   m_ObjectHideFlags: 0
@@ -3674,13 +3674,12 @@ RectTransform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 1306867320}
-  m_Father: {fileID: 633852090}
+  m_Children: []
+  m_Father: {fileID: 1306867320}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -61, y: -468.76}
+  m_AnchoredPosition: {x: -39.831177, y: 24.578003}
   m_SizeDelta: {x: 1585.8259, y: 142.4798}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &668125374
@@ -4251,7 +4250,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &792622725
 RectTransform:
   m_ObjectHideFlags: 0
@@ -4259,17 +4258,16 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 792622724}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 1893914066}
-  m_Father: {fileID: 633852090}
+  m_Children: []
+  m_Father: {fileID: 1893914066}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -61, y: -468.76}
+  m_AnchoredPosition: {x: -39.831177, y: 24.578003}
   m_SizeDelta: {x: 1585.8259, y: 142.4798}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &792622726
@@ -5743,8 +5741,12 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 677176994}
     - target: {fileID: 1997108742491165072, guid: f7acabc07f2ac1947806f91651796806, type: 3}
+      propertyPath: lifebar
+      value: 
+      objectReference: {fileID: 1100127336}
+    - target: {fileID: 1997108742491165072, guid: f7acabc07f2ac1947806f91651796806, type: 3}
       propertyPath: alertRange
-      value: 40
+      value: 30
       objectReference: {fileID: 0}
     - target: {fileID: 1997108742491165072, guid: f7acabc07f2ac1947806f91651796806, type: 3}
       propertyPath: tornadoSpawnPoint
@@ -5962,12 +5964,12 @@ GameObject:
   - component: {fileID: 1100127335}
   - component: {fileID: 1100127336}
   m_Layer: 5
-  m_Name: Slider
+  m_Name: AirLifebar
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1100127335
 RectTransform:
   m_ObjectHideFlags: 0
@@ -5980,14 +5982,15 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 317957661}
   - {fileID: 1615163498}
   - {fileID: 1679193467}
   - {fileID: 830611090}
-  m_Father: {fileID: 317957661}
+  m_Father: {fileID: 633852090}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 39.831177, y: -24.578}
+  m_AnchoredPosition: {x: -21.168823, y: -493.338}
   m_SizeDelta: {x: 1198.6262, y: 49.157}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1100127336
@@ -6487,12 +6490,12 @@ GameObject:
   - component: {fileID: 1306867320}
   - component: {fileID: 1306867321}
   m_Layer: 5
-  m_Name: Slider
+  m_Name: WaterLifebar
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1306867320
 RectTransform:
   m_ObjectHideFlags: 0
@@ -6505,14 +6508,15 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 668125373}
   - {fileID: 1808721573}
   - {fileID: 864495439}
   - {fileID: 1443758203}
-  m_Father: {fileID: 668125373}
+  m_Father: {fileID: 633852090}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 39.831177, y: -24.578}
+  m_AnchoredPosition: {x: -21.168823, y: -493.338}
   m_SizeDelta: {x: 1198.6262, y: 49.157}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1306867321
@@ -8942,12 +8946,12 @@ GameObject:
   - component: {fileID: 1893914066}
   - component: {fileID: 1893914067}
   m_Layer: 5
-  m_Name: Slider
+  m_Name: EarthLifebar
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1893914066
 RectTransform:
   m_ObjectHideFlags: 0
@@ -8960,14 +8964,15 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 792622725}
   - {fileID: 1544108814}
   - {fileID: 1417418844}
   - {fileID: 244599408}
-  m_Father: {fileID: 792622725}
+  m_Father: {fileID: 633852090}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 39.831177, y: -24.578}
+  m_AnchoredPosition: {x: -21.168823, y: -493.338}
   m_SizeDelta: {x: 1198.6262, y: 49.157}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1893914067
@@ -9588,7 +9593,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &2074839187
 RectTransform:
   m_ObjectHideFlags: 0
@@ -9600,13 +9605,12 @@ RectTransform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 387621678}
-  m_Father: {fileID: 633852090}
+  m_Children: []
+  m_Father: {fileID: 387621678}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -61, y: -468.76}
+  m_AnchoredPosition: {x: -39.831177, y: 24.578003}
   m_SizeDelta: {x: 1585.8259, y: 142.4798}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2074839188
