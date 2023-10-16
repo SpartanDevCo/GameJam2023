@@ -22,6 +22,9 @@ public class Player : MonoBehaviour,IDamageable
     [SerializeField] GameObject slash;
     [SerializeField] GameObject waterBeam;
     [SerializeField] LayerMask interactMask;
+    [SerializeField] LayerMask fireI;
+    [SerializeField] LayerMask waterI;
+    [SerializeField] LayerMask windI;
     
 
     [Header("Animaciones")]
@@ -84,7 +87,17 @@ public class Player : MonoBehaviour,IDamageable
     void SearchInteract(){
         UnityEngine.Debug.DrawRay(transform.position, transform.forward * rayDistance, Color.red);
         RaycastHit hit;
-        if(Physics.Raycast(transform.position, transform.forward, out hit, rayDistance, interactMask) && Input.GetKeyDown(KeyCode.E)){
+        if(Physics.Raycast(transform.position, transform.forward, out hit, rayDistance, fireI) && Input.GetKeyDown(KeyCode.E) && availableAttacks.Contains(AttackType.Water)){
+            UnityEngine.Debug.Log("SE PUEDE INTERACTUAR");
+            anim.SetInteger("Cinematic",1);
+            hit.collider.GetComponent<Animator>().SetTrigger("Activate");
+        }
+        if(Physics.Raycast(transform.position, transform.forward, out hit, rayDistance, windI) && Input.GetKeyDown(KeyCode.E) && availableAttacks.Contains(AttackType.Rock)){
+            UnityEngine.Debug.Log("SE PUEDE INTERACTUAR");
+            anim.SetInteger("Cinematic",1);
+            hit.collider.GetComponent<Animator>().SetTrigger("Activate");
+        }
+        if(Physics.Raycast(transform.position, transform.forward, out hit, rayDistance, waterI) && Input.GetKeyDown(KeyCode.E) && availableAttacks.Contains(AttackType.Wind)){
             UnityEngine.Debug.Log("SE PUEDE INTERACTUAR");
             anim.SetInteger("Cinematic",1);
             hit.collider.GetComponent<Animator>().SetTrigger("Activate");
