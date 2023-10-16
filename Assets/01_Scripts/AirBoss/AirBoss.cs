@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 
-public class AirBoss : MonoBehaviour
+public class AirBoss : MonoBehaviour, IDamageable
 {
     [Header("Atributos")]
     public float minWaitTime = 7;
@@ -84,5 +84,10 @@ public class AirBoss : MonoBehaviour
     {
         Gizmos.color = Color.yellow;
         Gizmos.DrawWireSphere(transform.position, alertRange);
+    }
+
+    public void TakeDamage(float damage)
+    {
+        throw new System.NotImplementedException();
     }
 }
