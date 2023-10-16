@@ -9,9 +9,10 @@ public class AirBoss : MonoBehaviour, IDamageable
     [Header("Atributos")]
     public float minWaitTime = 7;
     public float maxWaitTime = 10;
-    public int life = 100;
+    public float life = 100;
     public Animator anim;
     public Slider lifebar;
+    public bool death;
 
     [Header("Alerta")]
     public bool beAlert;
@@ -38,6 +39,7 @@ public class AirBoss : MonoBehaviour, IDamageable
     {
         lifebar.maxValue = 100;
         lifebar.value = 100;
+        death = false;
     }
 
     // Update is called once per frame
@@ -91,6 +93,13 @@ public class AirBoss : MonoBehaviour, IDamageable
 
     public void TakeDamage(float damage)
     {
-        throw new System.NotImplementedException();
+        if(life > 0)
+        {
+            life -= damage;
+        }
+        else
+        {
+            death= true;
+        }
     }
 }
