@@ -2,14 +2,17 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
-public class AirBoss : MonoBehaviour
+public class AirBoss : MonoBehaviour, IDamageable
 {
     [Header("Atributos")]
     public float minWaitTime = 7;
     public float maxWaitTime = 10;
-    public int life = 100;
+    public float life = 100;
     public Animator anim;
+    public Slider lifebar;
+    public bool death;
 
     [Header("Alerta")]
     public bool beAlert;
@@ -34,7 +37,9 @@ public class AirBoss : MonoBehaviour
 
     void Start()
     {
-        
+        lifebar.maxValue = 100;
+        lifebar.value = 100;
+        death = false;
     }
 
     // Update is called once per frame
@@ -84,5 +89,17 @@ public class AirBoss : MonoBehaviour
     {
         Gizmos.color = Color.yellow;
         Gizmos.DrawWireSphere(transform.position, alertRange);
+    }
+
+    public void TakeDamage(float damage)
+    {
+        if(life > 0)
+        {
+            life -= damage;
+        }
+        else
+        {
+            death= true;
+        }
     }
 }

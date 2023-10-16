@@ -12,7 +12,7 @@ public class EarthBossAttack1 : StateMachineBehaviour
     {
         if (earthBoss == null) earthBoss = animator.GetComponent<EarthBoss>();
         timer = 0;
-        rockAttacksCount = Random.Range(1, 4);
+        rockAttacksCount = Random.Range(1, 5);
     }
 
     // OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks
@@ -24,13 +24,17 @@ public class EarthBossAttack1 : StateMachineBehaviour
        }
        else
        {
-            earthBoss.RockAttack();
-            timer = 0;
-            rockAttacksCount--;
+          earthBoss.RockAttack();
+          timer = 0;
+          rockAttacksCount--;
+          earthBoss.anim.SetBool("rocks", true);
+          earthBoss.anim.SetBool("idle", false);
        }
        if (rockAttacksCount == 0)
        {
-            animator.SetTrigger("ChangeState");
+          earthBoss.anim.SetBool("rocks", false);
+          earthBoss.anim.SetBool("idle", true);
+          animator.SetTrigger("ChangeState");
        }
     }
 

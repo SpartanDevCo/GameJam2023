@@ -24,6 +24,7 @@ public class AirBoss_BeAlert : StateMachineBehaviour
     {
        if(boss.beAlert){
             boss.anim.SetBool("idle", true);
+            boss.lifebar.gameObject.SetActive(true);
             animator.SetTrigger("playerDetected");
        }
        else{
