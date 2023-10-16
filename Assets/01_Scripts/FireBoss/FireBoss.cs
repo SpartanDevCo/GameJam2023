@@ -7,6 +7,9 @@ using UnityEngine.SceneManagement;
 
 public class FireBoss : MonoBehaviour
 {
+    public Transform effectPoint;
+    [Header("Referencias")]
+    [SerializeField] GameObject rockEffect;
     public static float hp;
 
     #region Alert
@@ -20,27 +23,40 @@ public class FireBoss : MonoBehaviour
 
     public CinemachineTargetGroup cine;
     private GameObject boss;
-    public Animator animator;
+    
     #endregion
 
     #region Movement
-    public Transform player1Target;
-    public Transform player2Target;
     public Transform target;
     public float speed = 8;
     bool playerFound = false;
-    public Animator anim;
 
-   
+    #endregion
 
+    #region Attack 2
+    public GameObject wave;
+    #endregion
+
+    #region Movement
+    public GameObject Attack1Model;
+    public Transform A1FirePoint;
     #endregion
 
     void Update()
     {
         BeAlert();
-        //LookAtPlayer();
         CheckDistanceAndAttack();
 
+    }
+
+    public void WaveAttack()
+    {
+        Instantiate(wave, new Vector3(effectPoint.position.x, effectPoint.position.y, effectPoint.position.z), Quaternion.Euler(0, 0, 0));
+    }
+
+    public void AttackOne()
+    {
+        Instantiate(Attack1Model, new Vector3(A1FirePoint.position.x, A1FirePoint.position.y, A1FirePoint.position.z), Quaternion.Euler(0, 0, 0));
     }
     public void BeAlert()
     {
@@ -58,24 +74,20 @@ public class FireBoss : MonoBehaviour
             playerFound = true;
         }
     }
-    public void LookAtPlayer()
-    {
-        if (playerFound)
-        {
-            Vector3 dir = target.position - transform.position;
-            float angleY = Mathf.Atan2(dir.x, dir.z) * Mathf.Rad2Deg + 180;
-            transform.rotation = Quaternion.Euler(0, -angleY, 0);
-        }
-
-    }
     public void CheckDistanceAndAttack()
     {
         if (Vector3.Distance(transform.position, target.position) <= 10)
         {
             Near = true;
-        } else {
+        }
+        else
+        {
             Near = false;
         }
+    }
+    public void InstantiateRockEffect()
+    {
+        Instantiate(rockEffect, new Vector3(effectPoint.position.x, effectPoint.position.y + 5, effectPoint.position.z), effectPoint.rotation);
     }
     private void OnDrawGizmos()
     {
@@ -83,3 +95,4 @@ public class FireBoss : MonoBehaviour
         Gizmos.DrawWireSphere(transform.position, alertRange);
     }
 }
+
