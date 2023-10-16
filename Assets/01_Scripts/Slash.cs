@@ -5,6 +5,8 @@ using UnityEngine;
 public class Slash : MonoBehaviour
 {
     float speed = -15;
+
+    [SerializeField] float damage = 1;
     // Start is called before the first frame update
     void Start()
     {
@@ -19,7 +21,9 @@ public class Slash : MonoBehaviour
 
     void OnTriggerEnter(Collider other){
         if(other.gameObject.tag == "Enemy"){
-            other.gameObject.GetComponent<IDamageable>().TakeDamage(1);
+            other.gameObject.GetComponent<IDamageable>().TakeDamage(damage);
+        }else if(other.gameObject.tag == "Boss"){
+            other.gameObject.GetComponent<IDamageable>().TakeDamage(damage);
         }
     }
 }

@@ -5,6 +5,9 @@ using UnityEngine;
 public class FireBossAttack1 : StateMachineBehaviour
 {
     FireBoss boss;
+    float timer = 0;
+
+    bool attack = false;
     // OnStateEnter is called when a transition starts and the state machine starts to evaluate this state
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
@@ -13,15 +16,31 @@ public class FireBossAttack1 : StateMachineBehaviour
             boss = animator.GetComponent<FireBoss>();
         }
         animator.SetInteger("AttackType", 0);
+        attack = false;
     }
 
     // OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks
     override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        if(boss.Near){
-            animator.SetInteger("AttackType", 10);
-        } else {
-            animator.SetInteger("AttaType", 0);
+        timer += Time.deltaTime;
+        if (timer > 2)
+        {
+            boss.InstantiateRockEffect();
+            if(!attack){
+                boss.AttackOne();
+                attack = true;
+            }
+            timer = 0;
+            if (boss.Near)
+            {
+                animator.SetInteger("AttackType", -1);
+                animator.SetTrigger("Change");
+            }
+            else
+            {
+                animator.SetInteger("AttackType", 0);
+                animator.SetTrigger("Change");
+            }
         }
     }
 

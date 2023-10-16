@@ -26,7 +26,8 @@ public class ElementSwitch : MonoBehaviour
     void Start()
     {
         p = GetComponent<Player>();
-        attacks = Enum.GetValues(typeof(Player.AttackType)).Cast<Player.AttackType>().ToList();
+        //attacks = Enum.GetValues(typeof(Player.AttackType)).Cast<Player.AttackType>().ToList();
+        attacks = p.availableAttacks;
         SkinnedMeshRenderer modelRenderer = GetComponentInChildren<SkinnedMeshRenderer>();
 
         // Comprueba si se encontró el componente

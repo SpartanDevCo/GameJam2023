@@ -21,6 +21,7 @@ public class FireBossWalk : StateMachineBehaviour
     {
         if(boss.Near){
             animator.SetInteger("AttackType", 1);
+            animator.SetTrigger("Change");
             timer = 0;
         }
 
