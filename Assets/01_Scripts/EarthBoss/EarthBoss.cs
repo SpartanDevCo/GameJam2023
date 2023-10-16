@@ -87,6 +87,8 @@ public class EarthBoss : MonoBehaviour, IDamageable
         Debug.Log("EarthBoss life: " + life);
         if (life <= 0){
             //animator.SetBool("isDead", true);
+            Player p = GameObject.FindWithTag("Player").GetComponent<Player>();
+            p.availableAttacks.Add(Player.AttackType.Rock);
             anim.SetBool("dying", true);
             Destroy(gameObject, 5f);
         }
