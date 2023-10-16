@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class RockBall : MonoBehaviour
 {
+    public float damage=5;
     // Start is called before the first frame update
     void Start()
     {
