@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44770157, g: 0.4976772, b: 0.5753945, a: 1}
+  m_IndirectSpecularColor: {r: 0.4477017, g: 0.49767715, b: 0.5753945, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -1224,7 +1224,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 311209430}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.3582638, y: 1e-45, z: 0, w: 0.93362045}
+  m_LocalRotation: {x: 0.3582638, y: 1e-45, z: -1e-45, w: 0.93362045}
   m_LocalPosition: {x: 283.6, y: 54.4, z: -53.6}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -5978,6 +5978,37 @@ MonoBehaviour:
   rb: {fileID: 1180724703}
   boxes:
   - {fileID: 576934170}
+--- !u!1 &1229751267
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1229751268}
+  m_Layer: 0
+  m_Name: SpawningPoint2
+  m_TagString: Untagged
+  m_Icon: {fileID: 7174288486110832750, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1229751268
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1229751267}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -1.26, y: -0.25418806, z: 7.8}
+  m_LocalScale: {x: 3.5116003, y: 3.5116003, z: 3.5116003}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1308232511}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1230189276
 GameObject:
   m_ObjectHideFlags: 0
@@ -6303,8 +6334,9 @@ MonoBehaviour:
   distanceToPlayer: 0
   target: {fileID: 225650231}
   rocks: {fileID: 2745985064960132503, guid: d22c97ca7a52d5b43b850f8b81ed88f1, type: 3}
-  rainingRocks: {fileID: 1390241080158952737, guid: baa0aa12e5c74c8489dd49fbc4459024, type: 3}
+  rainingRocks: {fileID: 4892234043173908339, guid: 0e8450fad940c47448a74cb90994394a, type: 3}
   spawnPoint: {fileID: 1230189277}
+  spawnPoint2: {fileID: 1229751268}
   anim: {fileID: 1249742353}
 --- !u!4 &1308232511
 Transform:
@@ -6321,6 +6353,7 @@ Transform:
   m_Children:
   - {fileID: 1249742352}
   - {fileID: 1230189277}
+  - {fileID: 1229751268}
   m_Father: {fileID: 1813525520}
   m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
 --- !u!95 &1308232512
@@ -6676,8 +6709,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   life: 3
   attackRange: 13
+  speed: 7
   rb: {fileID: 1395993344}
   target: {fileID: 0}
+  anim: {fileID: 0}
+  playerLayer:
+    serializedVersion: 2
+    m_Bits: 0
 --- !u!1 &1428444107
 GameObject:
   m_ObjectHideFlags: 0
@@ -7002,7 +7040,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1473934882}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.3582638, y: 1e-45, z: 0, w: 0.93362045}
+  m_LocalRotation: {x: 0.3582638, y: 1e-45, z: -1e-45, w: 0.93362045}
   m_LocalPosition: {x: 283.6, y: 54.4, z: -53.6}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
