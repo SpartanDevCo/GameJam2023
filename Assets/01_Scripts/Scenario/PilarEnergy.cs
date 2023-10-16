@@ -12,18 +12,7 @@ public class PilarEnergy : MonoBehaviour, IDamageable
     // Start is called before the first frame update
     void Start()
     {
-        // // Desactivar la gravedad de las cajas al inicio
-        // foreach (GameObject box in boxes)
-        // {
-        //     Rigidbody boxRb = box.GetComponent<Rigidbody>();
-        //     if (boxRb != null)
-        //     {
-        //         boxRb.useGravity = false;
-        //     }
-        // }
-
-        // Desactivar la gravedad de las cajas al inicio
-        ManipulationGravity(false);
+        ManipulationGravity(false, true);
     }
 
     // Update is called once per frame
@@ -32,7 +21,7 @@ public class PilarEnergy : MonoBehaviour, IDamageable
         
     }
 
-    void ManipulationGravity(bool response)
+    void ManipulationGravity(bool response, bool kinematicR)
     {
         foreach (GameObject box in boxes)
         {
@@ -40,6 +29,7 @@ public class PilarEnergy : MonoBehaviour, IDamageable
             if (boxRb != null)
             {
                 boxRb.useGravity = response;
+                boxRb.isKinematic = kinematicR;
             }
         }
     }
@@ -49,7 +39,7 @@ public class PilarEnergy : MonoBehaviour, IDamageable
         Debug.Log("Pilar hp: " + hp);
         if (hp <= 0){
             // Activar la gravedad de las cajas
-            ManipulationGravity(true);
+            ManipulationGravity(true, false);
 
             Destroy(gameObject);
         }

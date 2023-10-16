@@ -22,6 +22,7 @@ public class EarthBossIdle : StateMachineBehaviour
        }
        else
        {
+            animator.SetBool("idle", false);
             animator.SetInteger("AttackType", Random.Range(1, 3));
             animator.SetTrigger("ChangeState");
        }
