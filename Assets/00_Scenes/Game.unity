@@ -3294,6 +3294,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 120665144307890864, guid: 3be7d6d483cc1314a80148df33470f93, type: 3}
+      propertyPath: heathbar
+      value: 
+      objectReference: {fileID: 99632848}
+    - target: {fileID: 120665144307890864, guid: 3be7d6d483cc1314a80148df33470f93, type: 3}
       propertyPath: waterBeam
       value: 
       objectReference: {fileID: 7668023882069740399, guid: 35008fc34bf46904db0c59a3732c360d, type: 3}
@@ -20644,6 +20648,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: AirBoss
       objectReference: {fileID: 0}
+    - target: {fileID: 3105246021693096739, guid: f7acabc07f2ac1947806f91651796806, type: 3}
+      propertyPath: m_TagString
+      value: Boss
+      objectReference: {fileID: 0}
     - target: {fileID: 8313502274527369134, guid: f7acabc07f2ac1947806f91651796806, type: 3}
       propertyPath: m_LocalPosition.x
       value: 12.2
@@ -35200,7 +35208,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 0}
+  m_audioClip: {fileID: 8300000, guid: cad639c8e7aa3784b8d25a4504536c10, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1
