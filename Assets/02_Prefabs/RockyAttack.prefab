@@ -68,7 +68,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2390214088939d34393601b626790374, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 7
+  damage: 10
   rockEffect: {fileID: 7342966777550959169, guid: eac439c7be219d649a40dde059991077, type: 3}
 --- !u!65 &183751440325247932
 BoxCollider:
