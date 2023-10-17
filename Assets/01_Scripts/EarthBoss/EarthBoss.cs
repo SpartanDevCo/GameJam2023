@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class EarthBoss : MonoBehaviour, IDamageable
 {
@@ -24,9 +26,12 @@ public class EarthBoss : MonoBehaviour, IDamageable
     [SerializeField] Transform spawnPoint;
     [SerializeField] Transform spawnPoint2;
     public Animator anim;
+    public Slider lifebar;
 
     void Start()
     {
+        lifebar.maxValue = 100;
+        lifebar.value = 100;
         target = GameObject.FindGameObjectWithTag("Player").transform;
         //animator = GetComponent<Animator>();
     }
@@ -49,6 +54,10 @@ public class EarthBoss : MonoBehaviour, IDamageable
 
         BeAlert();
     }
+    private void OnDestroy()
+    {
+        lifebar.gameObject.SetActive(false);
+    }
 
     public void RockAttack(){
         Instantiate(rocks,spawnPoint.position + transform.forward *2, Quaternion.Euler(transform.rotation.eulerAngles.x + 30f, transform.rotation.eulerAngles.y, transform.rotation.eulerAngles.z));
@@ -63,18 +72,22 @@ public class EarthBoss : MonoBehaviour, IDamageable
         Rigidbody rockRb = rainingRock.GetComponent<Rigidbody>();
         if (rockRb != null)
         {
-            rockRb.AddForce(directionToPlayer * 20, ForceMode.Impulse);
+            rockRb.AddForce(directionToPlayer * 10, ForceMode.Impulse);
         }
     }
 
     public void TakeDamage(float damage){
         life -= damage;
+        lifebar.value = life;
         Debug.Log("EarthBoss life: " + life);
         if (life <= 0){
             //animator.SetBool("isDead", true);
             Player p = GameObject.FindWithTag("Player").GetComponent<Player>();
             p.availableAttacks.Add(Player.AttackType.Rock);
             anim.SetBool("dying", true);
+            lifebar.gameObject.SetActive(false);    
+            p.hp = 100;
+            p.heathbar.value = 100;
             Destroy(gameObject, 5f);
         }
     }
@@ -85,6 +98,7 @@ public class EarthBoss : MonoBehaviour, IDamageable
 
         if (beAlert == true)
         {
+            lifebar.gameObject.SetActive(true);
             if (!found)
             {
                 boss = GameObject.FindGameObjectWithTag("Boss");
@@ -95,6 +109,7 @@ public class EarthBoss : MonoBehaviour, IDamageable
             {
                 transform.LookAt(new Vector3(target.position.x, transform.position.y, target.position.z));
             }
+            transform.LookAt(new Vector3(target.position.x, transform.position.y, target.position.z));
         }
     }
 
