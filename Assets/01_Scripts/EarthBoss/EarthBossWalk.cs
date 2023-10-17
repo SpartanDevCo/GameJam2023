@@ -2,22 +2,27 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EarthBossIdle : StateMachineBehaviour
+public class EarthBossWalk : StateMachineBehaviour
 {
     EarthBoss earthBoss;
+    //float timer = 0;
+    float speed;
+    float timer;
+    float walkDuration = 3f;
     // OnStateEnter is called when a transition starts and the state machine starts to evaluate this state
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        if (earthBoss == null) earthBoss = animator.GetComponent<EarthBoss>();
+       if (earthBoss == null) earthBoss = animator.GetComponent<EarthBoss>();
+        speed = 3;
+        timer = 0;
     }
 
     // OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks
     override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
-    {   
+    {
         if (earthBoss.found && earthBoss.distanceToPlayer > earthBoss.stopDistance)
         {
-            animator.SetBool("PlayerIn", true);
-            animator.SetInteger("AttackType", 0);
+            animator.transform.position = Vector3.MoveTowards(animator.transform.position, earthBoss.target.position, speed * Time.deltaTime);
         }
         else if (earthBoss.distanceToPlayer <= earthBoss.stopDistance)
         {
@@ -37,7 +42,7 @@ public class EarthBossIdle : StateMachineBehaviour
     //{
     //    // Implement code that processes and affects root motion
     //}
-
+    
     // OnStateIK is called right after Animator.OnAnimatorIK()
     //override public void OnStateIK(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     //{

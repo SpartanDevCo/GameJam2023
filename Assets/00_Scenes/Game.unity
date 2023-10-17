@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.44037816, g: 0.48895854, b: 0.5691211, a: 1}
+  m_IndirectSpecularColor: {r: 0.44037813, g: 0.48895836, b: 0.56912106, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -3400,7 +3400,7 @@ MonoBehaviour:
   patrolPoints:
   - {fileID: 125366055}
   - {fileID: 656141766}
-  speed: 5
+  speed: 4
 --- !u!1001 &133782049
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3836,6 +3836,10 @@ PrefabInstance:
       value: totem
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 58ad69e0a4eca3049b1050fa90ab803c, type: 3}
+      propertyPath: m_TagString
+      value: Untagged
+      objectReference: {fileID: 0}
+    - target: {fileID: 951011102456138778, guid: 58ad69e0a4eca3049b1050fa90ab803c, type: 3}
       propertyPath: m_TagString
       value: Pilar
       objectReference: {fileID: 0}
@@ -13405,6 +13409,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 58ad69e0a4eca3049b1050fa90ab803c, type: 3}
       propertyPath: m_Name
       value: totem (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 951011102456138778, guid: 58ad69e0a4eca3049b1050fa90ab803c, type: 3}
+      propertyPath: m_TagString
+      value: Pilar
       objectReference: {fileID: 0}
     - target: {fileID: 3078023919453430577, guid: 58ad69e0a4eca3049b1050fa90ab803c, type: 3}
       propertyPath: m_LocalScale.x

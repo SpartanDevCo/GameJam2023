@@ -12,6 +12,7 @@ TagManager:
   - AirSlash
   - Water
   - RockAttack
+  - BossEarth
   layers:
   - Default
   - TransparentFX

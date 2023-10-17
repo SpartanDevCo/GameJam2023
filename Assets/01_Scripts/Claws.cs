@@ -29,5 +29,6 @@ public class Claws : MonoBehaviour
         {
             other.gameObject.GetComponent<IDamageable>().TakeDamage(damage*multiplier);
         }
+        
     }
 }
