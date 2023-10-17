@@ -44,7 +44,7 @@ public class Enemy : MonoBehaviour,IDamageable
 
         if (beAlert == true)
         {
-            Debug.Log("Se ha Encontrado al player");
+            //Debug.Log("Se ha Encontrado al player");
             if (!targetInRange)
             {
                 targetInRange = true;

@@ -26,7 +26,7 @@ public class AirBoss_Attack1 : StateMachineBehaviour
         if(bulletCount > 0)
         {
            
-            if (animator.transform.position.y < 100f)
+            if (animator.transform.position.y < 98f)
             {
                 boss.anim.SetBool("fly", true);
                 boss.anim.SetBool("idle", false);

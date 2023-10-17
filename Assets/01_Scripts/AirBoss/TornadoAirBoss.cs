@@ -32,12 +32,12 @@ public class TornadoAirBoss : MonoBehaviour
     {
         transform.Translate(0, (speed * Time.deltaTime), 0);
     }
-    private void OnCollisionEnter(Collision other)
+  
+    private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.tag == "Player" && damage)
         {
             other.gameObject.GetComponent<IDamageable>().TakeDamage(20);
-            Destroy(gameObject);
             damage = false;
         }
     }

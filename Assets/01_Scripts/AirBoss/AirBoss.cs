@@ -4,12 +4,13 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
+
 public class AirBoss : MonoBehaviour, IDamageable
 {
     [Header("Atributos")]
     public float minWaitTime = 7;
     public float maxWaitTime = 10;
-    public float life = 100;
+    public float life = 20;
     public Animator anim;
     public Slider lifebar;
     public bool death;
@@ -37,8 +38,8 @@ public class AirBoss : MonoBehaviour, IDamageable
 
     void Start()
     {
-        lifebar.maxValue = 100;
-        lifebar.value = 100;
+        lifebar.maxValue = 20;
+        lifebar.value = 20;
         death = false;
     }
 
@@ -96,12 +97,18 @@ public class AirBoss : MonoBehaviour, IDamageable
         if(life > 0)
         {
             life -= damage;
+            Debug.Log(life);
+            lifebar.value = life;
         }
         else
         {
             death= true;
+            
             Player p = GameObject.FindWithTag("Player").GetComponent<Player>();
             p.availableAttacks.Add(Player.AttackType.Wind);
+            p.hp = 100;
+            p.heathbar.value = 100;
+            lifebar.gameObject.SetActive(false);
             Destroy(gameObject);
         }
     }

@@ -12,6 +12,7 @@ public class FireBoss : MonoBehaviour,IDamageable
     [Header("Referencias")]
     [SerializeField] GameObject rockEffect;
     public static float hp;
+    public Slider lifebar;
 
     #region Alert
     bool beAlert;
@@ -43,6 +44,12 @@ public class FireBoss : MonoBehaviour,IDamageable
     public Transform A1FirePoint;
     #endregion
 
+    void Start()
+    {
+        lifebar.maxValue = life;
+        lifebar.value = life;
+    }
+
     void Update()
     {
         BeAlert();
@@ -56,6 +63,10 @@ public class FireBoss : MonoBehaviour,IDamageable
         if (life <= 0){
             Player p = GameObject.FindWithTag("Player").GetComponent<Player>();
             p.availableAttacks.Add(Player.AttackType.Fire);
+            p.availableAttacks.Add(Player.AttackType.Wind);
+            p.hp = 100;
+            p.heathbar.value = 100;
+            lifebar.gameObject.SetActive(false);
             Destroy(gameObject);
         }
     }
@@ -84,6 +95,7 @@ public class FireBoss : MonoBehaviour,IDamageable
             }
             transform.LookAt(new Vector3(target.position.x, transform.position.y, target.position.z));
             playerFound = true;
+            lifebar.gameObject.SetActive(true);
         }
     }
     public void CheckDistanceAndAttack()

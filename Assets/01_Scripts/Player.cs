@@ -9,12 +9,12 @@ using UnityEngine.UI;
 public class Player : MonoBehaviour, IDamageable
 {
     [Header("Atributos")]
-    [SerializeField] float hp = 100;
+    [SerializeField] public float hp = 100;
     [SerializeField] float speed = 7;
     [SerializeField] float jumpSpeed = 7;
     [SerializeField] float rayDistance = 10;
     [SerializeField] float turnSmoothTime = 0.1f;
-    [SerializeField] Slider heathbar;
+    [SerializeField] public Slider heathbar;
     [SerializeField] float jumpHeight = 3f;
     [SerializeField] float gravity = -9.8f;
     float turnSmoothVelocity;

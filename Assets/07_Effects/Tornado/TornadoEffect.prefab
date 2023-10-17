@@ -14668,6 +14668,7 @@ GameObject:
   - component: {fileID: 6087342633534317413}
   - component: {fileID: 5287527071290150269}
   - component: {fileID: 6286471942350068757}
+  - component: {fileID: 172823063490399663}
   m_Layer: 0
   m_Name: TornadoEffect
   m_TagString: Untagged
@@ -19602,3 +19603,24 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!65 &172823063490399663
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5896561297116101091}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 2.318038, y: 3.0704968, z: 8.041592}
+  m_Center: {x: -0.10905193, y: 0.06539918, z: 3.900253}
