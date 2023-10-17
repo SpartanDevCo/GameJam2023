@@ -85,6 +85,7 @@ public class Enemy : MonoBehaviour,IDamageable
             Debug.Log("Enemy life: " + life);
             if (life <= 0){
                 dead = true;
+                GameObject.FindWithTag("Player").GetComponent<Player>().elementalEnergy += 10;
                 anim.SetTrigger("Dead");
             }
         }

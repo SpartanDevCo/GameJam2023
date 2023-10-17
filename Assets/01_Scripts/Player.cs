@@ -9,14 +9,16 @@ using UnityEngine.UI;
 public class Player : MonoBehaviour, IDamageable
 {
     [Header("Atributos")]
-    [SerializeField] public float hp = 100;
+    [SerializeField] float hp = 100;
+    public float elementalEnergy = 100;
     [SerializeField] float speed = 7;
-    [SerializeField] float jumpSpeed = 7;
     [SerializeField] float rayDistance = 10;
     [SerializeField] float turnSmoothTime = 0.1f;
     [SerializeField] public Slider heathbar;
     [SerializeField] float jumpHeight = 3f;
     [SerializeField] float gravity = -9.8f;
+    [SerializeField] float minY = -9.8f;
+    float timerReload = 0;
     float turnSmoothVelocity;
     bool dead = false;
     bool animationInProgress = false;
@@ -38,6 +40,7 @@ public class Player : MonoBehaviour, IDamageable
     [SerializeField] ParticleSystem energy;
     [SerializeField] CharacterController controllerMovement;
     [SerializeField] Transform cam;
+    [SerializeField] Transform teleportPoint;
 
 
     [Header("Animaciones")]
@@ -53,12 +56,11 @@ public class Player : MonoBehaviour, IDamageable
         {
             Move();
             ControlDash();
+            ReloadEnergy();
             SearchInteract();
+            PreventFall();
             if (Input.GetMouseButtonDown(0)) { SetAnimAttack(); }
         }
-
-
-
     }
 
     void Move()
@@ -91,6 +93,12 @@ public class Player : MonoBehaviour, IDamageable
 
         velocity.y += gravity * Time.deltaTime;
         controllerMovement.Move(velocity * Time.deltaTime);
+    }
+
+    void PreventFall(){
+        if(transform.position.y < minY){
+            transform.position = teleportPoint.position;
+        }
     }
 
     void ControlDash()
@@ -177,14 +185,35 @@ public class Player : MonoBehaviour, IDamageable
         switch (attackType)
         {
             case AttackType.Rock:
-                RockAttack();
+                if(elementalEnergy - 4 >= 0){
+                    elementalEnergy-=4;
+                    RockAttack();
+                }
                 break;
             case AttackType.Wind:
-                AirAttack();
+                if(elementalEnergy - 4 >= 0){
+                    elementalEnergy-=3;
+                    AirAttack();
+                }
+                
                 break;
             case AttackType.Water:
-                WaterAttack();
+                if(elementalEnergy - 4 >= 0){
+                    elementalEnergy-=5;
+                    WaterAttack();
+                }
                 break;
+        }
+    }
+
+    void ReloadEnergy(){
+        timerReload+=Time.deltaTime;
+        if(timerReload>= 3.0f){
+            elementalEnergy+=1;
+            if(elementalEnergy>100.0f){
+                elementalEnergy = 100;
+            }
+            timerReload = 0;
         }
     }
 

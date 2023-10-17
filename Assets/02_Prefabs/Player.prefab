@@ -138,14 +138,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hp: 100
+  elementalEnergy: 100
   speed: 7
-  jumpSpeed: 7
   rayDistance: 20
   turnSmoothTime: 0.1
+  heathbar: {fileID: 0}
+  jumpHeight: 8
+  gravity: -9.8
+  minY: -78
   attackType: 0
   availableAttacks: 00000000
-  heathbar: {fileID: 0}
-  rb: {fileID: 0}
   rocks: {fileID: 2745985064960132503, guid: d22c97ca7a52d5b43b850f8b81ed88f1, type: 3}
   spawnPoint: {fileID: 1695135579144497996}
   slash: {fileID: 1640144176668494902, guid: 6fa95e0342fcab348993cd5e1726f956, type: 3}
@@ -165,6 +167,7 @@ MonoBehaviour:
   energy: {fileID: 3519266865302645686, guid: 3710249ec1449d04184c368f2951eb11, type: 3}
   controllerMovement: {fileID: 331116701492779968}
   cam: {fileID: 0}
+  teleportPoint: {fileID: 0}
   anim: {fileID: 1539188179848441558}
 --- !u!114 &1534607429492978518
 MonoBehaviour:
