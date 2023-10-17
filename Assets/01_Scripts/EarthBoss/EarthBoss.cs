@@ -9,9 +9,17 @@ public class EarthBoss : MonoBehaviour, IDamageable
     public float timeBtwAttacks = 2f;
     public float stopDistance = 10f;
     public float distanceToPlayer;
+    public bool beAlert;
+    public float alertRange = 40;
+    public bool found = false;
+    bool playerFound = false;
+    public bool Near = false;
+
 
     [Header("Referencias")]
+    private GameObject boss;
     public Transform target;
+    public LayerMask playerLayer;
     public GameObject rocks;
     public GameObject rainingRocks;
     [SerializeField] Transform spawnPoint;
@@ -31,8 +39,20 @@ public class EarthBoss : MonoBehaviour, IDamageable
     // Update is called once per frame
     void Update()
     {
-        RotationTowardsPlayer();
+        //RotationTowardsPlayer();
+        CheckDistanceAndAttack();
+        
         distanceToPlayer = Vector3.Distance(transform.position, target.position);
+
+        //found = distanceToPlayer <= alertRange;
+        if (distanceToPlayer <= alertRange)
+        {
+            found = true;
+        }
+
+        Near = distanceToPlayer <= stopDistance;
+
+        BeAlert();
     }
 
     public void RockAttack(){
@@ -76,11 +96,11 @@ public class EarthBoss : MonoBehaviour, IDamageable
         }
     }
 
-    void RotationTowardsPlayer(){
-        Vector3 dir = target.position - transform.position;
-        float angleY = Mathf.Atan2(dir.x, dir.z) * Mathf.Rad2Deg + 0;
-        transform.rotation = Quaternion.Euler(0, angleY, 0);
-    }
+    // void RotationTowardsPlayer(){
+    //     Vector3 dir = target.position - transform.position;
+    //     float angleY = Mathf.Atan2(dir.x, dir.z) * Mathf.Rad2Deg + 0;
+    //     transform.rotation = Quaternion.Euler(0, angleY, 0);
+    // }
 
     public void TakeDamage(float damage){
         life -= damage;
@@ -92,5 +112,40 @@ public class EarthBoss : MonoBehaviour, IDamageable
             anim.SetBool("dying", true);
             Destroy(gameObject, 5f);
         }
+    }
+
+    public void BeAlert()
+    {
+        beAlert = Physics.CheckSphere(transform.position, alertRange, playerLayer);
+
+        if (beAlert == true)
+        {
+            if (!found)
+            {
+                boss = GameObject.FindGameObjectWithTag("Boss");
+                //cine.AddMember(boss.transform, 1, 1);
+                found = true;
+            }
+            transform.LookAt(new Vector3(target.position.x, transform.position.y, target.position.z));
+            playerFound = true;
+        }
+    }
+
+    public void CheckDistanceAndAttack()
+    {
+        if (Vector3.Distance(transform.position, target.position) <= 10)
+        {
+            Near = true;
+        }
+        else
+        {
+            Near = false;
+        }
+    }
+
+    private void OnDrawGizmos()
+    {
+        Gizmos.color = Color.blue;
+        Gizmos.DrawWireSphere(transform.position, alertRange);
     }
 }

@@ -12,7 +12,9 @@ public class EarthBossAttack1 : StateMachineBehaviour
     {
         if (earthBoss == null) earthBoss = animator.GetComponent<EarthBoss>();
         timer = 0;
-        rockAttacksCount = Random.Range(1, 5);
+        rockAttacksCount = Random.Range(2, 5);
+      //   earthBoss.anim.SetBool("idle", false);
+      //   earthBoss.anim.SetBool("rocks", true);
     }
 
     // OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks
@@ -27,22 +29,22 @@ public class EarthBossAttack1 : StateMachineBehaviour
           earthBoss.RockAttack();
           timer = 0;
           rockAttacksCount--;
-          earthBoss.anim.SetBool("rocks", true);
-          earthBoss.anim.SetBool("idle", false);
+         //  earthBoss.anim.SetBool("rocks", true);
+         //  earthBoss.anim.SetBool("idle", false);
        }
        if (rockAttacksCount == 0)
        {
-          earthBoss.anim.SetBool("rocks", false);
-          earthBoss.anim.SetBool("idle", true);
+         //  earthBoss.anim.SetBool("rocks", false);
+         //  earthBoss.anim.SetBool("idle", true);
           animator.SetTrigger("ChangeState");
        }
     }
 
     // OnStateExit is called when a transition ends and the state machine finishes evaluating this state
-    //override public void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
-    //{
-    //    
-    //}
+    override public void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
+    {
+       
+    }
 
     // OnStateMove is called right after Animator.OnAnimatorMove()
     //override public void OnStateMove(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)

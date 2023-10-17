@@ -13,7 +13,7 @@ public class EarthBossAttack2 : StateMachineBehaviour
     {
         if (earthBoss == null) earthBoss = animator.GetComponent<EarthBoss>();
         timer = 0;
-        throwsCount = Random.Range(1, 6);
+        throwsCount = Random.Range(2, 6);
     }
 
     // OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks
