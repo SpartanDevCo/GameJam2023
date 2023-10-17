@@ -22,7 +22,8 @@ public class EarthBossIdle : StateMachineBehaviour
         else if (earthBoss.distanceToPlayer <= earthBoss.stopDistance)
         {
             animator.SetTrigger("ChangeState");
-            animator.SetInteger("AttackType", earthBoss.Near ? 1 : 2);
+            //animator.SetInteger("AttackType", earthBoss.Near ? 1 : 2);
+            animator.SetInteger("AttackType", Random.Range(1, 3));
         }
     }
 
