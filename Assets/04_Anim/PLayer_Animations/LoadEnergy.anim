@@ -74805,7 +74805,7 @@ AnimationClip:
     floatParameter: 0
     intParameter: 0
     messageOptions: 0
-  - time: 5.5333333
+  - time: 5.366667
     functionName: ChangeAnimInProgress
     data: 
     objectReferenceParameter: {fileID: 0}

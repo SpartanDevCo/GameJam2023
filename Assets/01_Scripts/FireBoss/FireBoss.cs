@@ -59,6 +59,7 @@ public class FireBoss : MonoBehaviour,IDamageable
 
     public void TakeDamage(float damage){
         life -= damage;
+        lifebar.value = life;
         Debug.Log("Boss life: " + life);
         if (life <= 0){
             Player p = GameObject.FindWithTag("Player").GetComponent<Player>();

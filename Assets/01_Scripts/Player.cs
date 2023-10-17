@@ -15,13 +15,14 @@ public class Player : MonoBehaviour, IDamageable
     [SerializeField] float rayDistance = 10;
     [SerializeField] float turnSmoothTime = 0.1f;
     [SerializeField] public Slider heathbar;
+    [SerializeField] public Slider energybar;
     [SerializeField] float jumpHeight = 3f;
     [SerializeField] float gravity = -9.8f;
     [SerializeField] float minY = -9.8f;
     float timerReload = 0;
     float turnSmoothVelocity;
     bool dead = false;
-    bool animationInProgress = false;
+    public bool animationInProgress = false;
     float distanceToGround;
     bool grounded;
     Vector3 velocity;
@@ -48,6 +49,8 @@ public class Player : MonoBehaviour, IDamageable
     void Start()
     {
         heathbar.maxValue = 100;
+        energybar.maxValue = 100;
+        energybar.value = 100;
         distanceToGround = GetComponent<Collider>().bounds.extents.y;
         Cursor.lockState = CursorLockMode.Locked;
     }
@@ -60,6 +63,7 @@ public class Player : MonoBehaviour, IDamageable
             ReloadEnergy();
             SearchInteract();
             PreventFall();
+            ShowEnergy();
             if (Input.GetMouseButtonDown(0)) { SetAnimAttack(); }
         }
     }
@@ -187,21 +191,21 @@ public class Player : MonoBehaviour, IDamageable
         switch (attackType)
         {
             case AttackType.Rock:
-                if(elementalEnergy - 4 >= 0){
-                    elementalEnergy-=4;
+                if(elementalEnergy - 10 >= 0){
+                    elementalEnergy-=10;
                     RockAttack();
                 }
                 break;
             case AttackType.Wind:
-                if(elementalEnergy - 4 >= 0){
-                    elementalEnergy-=3;
+                if(elementalEnergy - 7 >= 0){
+                    elementalEnergy-=7;
                     AirAttack();
                 }
                 
                 break;
             case AttackType.Water:
-                if(elementalEnergy - 4 >= 0){
-                    elementalEnergy-=5;
+                if(elementalEnergy - 20 >= 0){
+                    elementalEnergy-=20;
                     WaterAttack();
                 }
                 break;
@@ -217,6 +221,10 @@ public class Player : MonoBehaviour, IDamageable
             }
             timerReload = 0;
         }
+    }
+    void ShowEnergy()
+    {
+        energybar.value = elementalEnergy;
     }
 
     public void ReturnToNormal()

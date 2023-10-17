@@ -39,6 +39,10 @@ public class MachinesText : MonoBehaviour
             img.SetActive(false);
         }
     }
+    private void OnDestroy()
+    {
+        img.SetActive(false);
+    }
     private void OnDrawGizmos()
     {
         Gizmos.color = Color.yellow;
