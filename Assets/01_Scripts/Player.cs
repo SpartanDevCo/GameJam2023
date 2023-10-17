@@ -14,7 +14,7 @@ public class Player : MonoBehaviour, IDamageable
     [SerializeField] float speed = 7;
     [SerializeField] float rayDistance = 10;
     [SerializeField] float turnSmoothTime = 0.1f;
-    [SerializeField] Slider heathbar;
+    [SerializeField] public Slider heathbar;
     [SerializeField] float jumpHeight = 3f;
     [SerializeField] float gravity = -9.8f;
     [SerializeField] float minY = -9.8f;
