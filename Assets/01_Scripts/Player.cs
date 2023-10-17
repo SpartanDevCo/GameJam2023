@@ -53,6 +53,7 @@ public class Player : MonoBehaviour, IDamageable
         energybar.value = 100;
         distanceToGround = GetComponent<Collider>().bounds.extents.y;
         Cursor.lockState = CursorLockMode.Locked;
+        
     }
     void Update()
     {

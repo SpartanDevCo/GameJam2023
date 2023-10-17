@@ -32,7 +32,7 @@ public class AirBoss_Attack2 : StateMachineBehaviour
 
             if (distance > 0.8f)
             {
-                animator.transform.Translate(0, 0, 50 * Time.deltaTime);
+                animator.transform.Translate(0, 0, 20 * Time.deltaTime);
             }
             else
             {
