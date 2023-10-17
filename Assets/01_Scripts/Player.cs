@@ -9,7 +9,7 @@ using UnityEngine.UI;
 public class Player : MonoBehaviour, IDamageable
 {
     [Header("Atributos")]
-    [SerializeField] float hp = 100;
+    public float hp = 100;
     public float elementalEnergy = 100;
     [SerializeField] float speed = 7;
     [SerializeField] float rayDistance = 10;
@@ -49,6 +49,7 @@ public class Player : MonoBehaviour, IDamageable
     {
         heathbar.maxValue = 100;
         distanceToGround = GetComponent<Collider>().bounds.extents.y;
+        Cursor.lockState = CursorLockMode.Locked;
     }
     void Update()
     {
@@ -89,6 +90,7 @@ public class Player : MonoBehaviour, IDamageable
         if (Input.GetButtonDown("Jump") && grounded)
         {
             velocity.y = Mathf.Sqrt(jumpHeight * -2f * gravity);
+            anim.SetTrigger("Jumping");
         }
 
         velocity.y += gravity * Time.deltaTime;

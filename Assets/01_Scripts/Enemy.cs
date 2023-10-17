@@ -68,7 +68,7 @@ public class Enemy : MonoBehaviour,IDamageable
         }
         
     }
-    void Attack(){
+    public void Attack(){
         anim.SetBool("Attack",true);
     }
 
