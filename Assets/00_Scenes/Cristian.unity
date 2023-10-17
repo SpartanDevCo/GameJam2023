@@ -1657,7 +1657,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 311209430}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.3582638, y: -3e-45, z: 1e-45, w: 0.93362045}
+  m_LocalRotation: {x: 0.3582638, y: 1e-45, z: 0, w: 0.93362045}
   m_LocalPosition: {x: 283.6, y: 54.4, z: -53.6}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -6598,7 +6598,7 @@ Transform:
   m_GameObject: {fileID: 1229751267}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.09692317, y: 0.58461535, z: 0.59999907}
+  m_LocalPosition: {x: -0.09692317, y: 0.401, z: 0.59999907}
   m_LocalScale: {x: 0.27012306, y: 0.2701231, z: 0.27012306}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -6629,7 +6629,7 @@ Transform:
   m_GameObject: {fileID: 1230189276}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.09692317, y: -0.03955296, z: 0.59999907}
+  m_LocalPosition: {x: -0.097, y: -0.03955296, z: 0.395}
   m_LocalScale: {x: 0.27012306, y: 0.2701231, z: 0.27012306}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -6680,7 +6680,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   life: 100
   timeBtwAttacks: 2
-  stopDistance: 10
+  stopDistance: 15
   distanceToPlayer: 0
   beAlert: 0
   alertRange: 40
@@ -7686,7 +7686,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1473934882}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.3582638, y: -3e-45, z: 1e-45, w: 0.93362045}
+  m_LocalRotation: {x: 0.3582638, y: 1e-45, z: 0, w: 0.93362045}
   m_LocalPosition: {x: 283.6, y: 54.4, z: -53.6}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0

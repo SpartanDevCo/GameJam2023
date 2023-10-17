@@ -12,7 +12,6 @@ public class EarthBoss : MonoBehaviour, IDamageable
     public bool beAlert;
     public float alertRange = 40;
     public bool found = false;
-    bool playerFound = false;
     public bool Near = false;
 
 
@@ -26,10 +25,6 @@ public class EarthBoss : MonoBehaviour, IDamageable
     [SerializeField] Transform spawnPoint2;
     public Animator anim;
 
-    //[Header("Animaciones")]
-    //public Animator animator;
-
-    // Start is called before the first frame update
     void Start()
     {
         target = GameObject.FindGameObjectWithTag("Player").transform;
@@ -56,51 +51,21 @@ public class EarthBoss : MonoBehaviour, IDamageable
     }
 
     public void RockAttack(){
-        RaycastHit hit;
-        if (Physics.Raycast(spawnPoint.position, Vector3.down, out hit))
-        {
-            // Verifica si el rayo golpea algo
-            if (hit.collider != null)
-            {
-                // La posición del suelo donde el rayo golpea
-                Vector3 groundPosition = hit.point;
-
-                // Spawnear el objeto al nivel del suelo
-                Instantiate(rocks,groundPosition + transform.forward *2, Quaternion.Euler(transform.rotation.eulerAngles.x + 30f, transform.rotation.eulerAngles.y, transform.rotation.eulerAngles.z));
-            }
-        }
+        Instantiate(rocks,spawnPoint.position + transform.forward *2, Quaternion.Euler(transform.rotation.eulerAngles.x + 30f, transform.rotation.eulerAngles.y, transform.rotation.eulerAngles.z));
     }
 
     public void RainingRocksAttack(){
-        RaycastHit hit;
-        if (Physics.Raycast(spawnPoint2.position, Vector3.down, out hit))
+        Debug.Log("Raining Rocks");
+        GameObject rainingRock = Instantiate(rainingRocks, spawnPoint2.position, Quaternion.identity);
+        Vector3 directionToPlayer = (target.position - rainingRock.transform.position).normalized;
+        rainingRock.transform.forward = directionToPlayer;
+
+        Rigidbody rockRb = rainingRock.GetComponent<Rigidbody>();
+        if (rockRb != null)
         {
-            // Verifica si el rayo golpea algo
-            if (hit.collider != null)
-            {
-                // La posición del suelo donde el rayo golpea
-                //Vector3 groundPosition = hit.point;
-                GameObject rainingRock = Instantiate(rainingRocks, spawnPoint2.position, Quaternion.identity);
-
-                // Apuntar la roca hacia el jugador
-                Vector3 directionToPlayer = (target.position - rainingRock.transform.position).normalized;
-                rainingRock.transform.forward = directionToPlayer;
-
-                // Lanzar la roca hacia el jugador
-                Rigidbody rockRb = rainingRock.GetComponent<Rigidbody>();
-                if (rockRb != null)
-                {
-                    rockRb.AddForce(directionToPlayer * 40, ForceMode.Impulse);
-                }
-            }
+            rockRb.AddForce(directionToPlayer * 20, ForceMode.Impulse);
         }
     }
-
-    // void RotationTowardsPlayer(){
-    //     Vector3 dir = target.position - transform.position;
-    //     float angleY = Mathf.Atan2(dir.x, dir.z) * Mathf.Rad2Deg + 0;
-    //     transform.rotation = Quaternion.Euler(0, angleY, 0);
-    // }
 
     public void TakeDamage(float damage){
         life -= damage;
@@ -126,8 +91,10 @@ public class EarthBoss : MonoBehaviour, IDamageable
                 //cine.AddMember(boss.transform, 1, 1);
                 found = true;
             }
-            transform.LookAt(new Vector3(target.position.x, transform.position.y, target.position.z));
-            playerFound = true;
+            if (!Near)
+            {
+                transform.LookAt(new Vector3(target.position.x, transform.position.y, target.position.z));
+            }
         }
     }
 
