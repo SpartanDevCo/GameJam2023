@@ -16,6 +16,7 @@ public class EarthBoss : MonoBehaviour, IDamageable
     public float alertRange = 40;
     public bool found = false;
     public bool Near = false;
+    public GameObject element;
 
 
     [Header("Referencias")]
@@ -97,8 +98,8 @@ public class EarthBoss : MonoBehaviour, IDamageable
             lifebar.gameObject.SetActive(false);    
             p.hp = 100;
             p.heathbar.value = 100;
-            //Destroy(gameObject, 5f);
-            Destroy(gameObject);
+            element.SetActive(true);
+            Destroy(gameObject, 5f);
         }
     }
 

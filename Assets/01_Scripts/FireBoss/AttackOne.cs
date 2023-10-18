@@ -16,8 +16,11 @@ public class AttackOne : MonoBehaviour
         
     }
 
-    private void OnCollisionEnter(Collision other) {
-        if(other.gameObject.tag == "Player"){
+   
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.tag == "Player")
+        {
             other.gameObject.GetComponent<IDamageable>().TakeDamage(10);
             Destroy(gameObject);
         }
