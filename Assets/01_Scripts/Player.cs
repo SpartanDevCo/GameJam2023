@@ -224,11 +224,16 @@ public class Player : MonoBehaviour, IDamageable
 
     void ReloadEnergy(){
         timerReload+=Time.deltaTime;
-        if(timerReload>= 3.0f){
-            elementalEnergy+=1;
+        if(timerReload>= 2.0f){
+            elementalEnergy+=3;
+            hp++;
             if(elementalEnergy>100.0f){
                 elementalEnergy = 100;
             }
+            if(hp>=100){
+                hp=100;
+            }
+            heathbar.value = hp;
             timerReload = 0;
         }
     }
