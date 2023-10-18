@@ -2267,11 +2267,11 @@ MonoBehaviour:
   spawnPoint: {fileID: 249806540}
   spawnPoint2: {fileID: 1296963227}
   rockEffect: {fileID: 0}
+  rockEffect: {fileID: 0}
   anim: {fileID: 81550967}
   lifebar: {fileID: 1893914067}
-  attack1Sound: {fileID: 0}
-  attack2Sound: {fileID: 0}
-  voiceSound: {fileID: 0}
+  attack1Sound: {fileID: 8300000, guid: f9a4703b42f1bde45a8d1419327d55c7, type: 3}
+  attack2Sound: {fileID: 8300000, guid: 5d74177b4edb6f840aa8a223a0a53788, type: 3}
 --- !u!95 &81550967
 Animator:
   serializedVersion: 5
@@ -4665,9 +4665,25 @@ PrefabInstance:
       value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 120665144307890864, guid: 3be7d6d483cc1314a80148df33470f93, type: 3}
+      propertyPath: magicCharge
+      value: 
+      objectReference: {fileID: 8300000, guid: b89c765e3155cfb4bbeddab54f2bc82a, type: 3}
+    - target: {fileID: 120665144307890864, guid: 3be7d6d483cc1314a80148df33470f93, type: 3}
       propertyPath: teleportPoint
       value: 
       objectReference: {fileID: 1363861883}
+    - target: {fileID: 120665144307890864, guid: 3be7d6d483cc1314a80148df33470f93, type: 3}
+      propertyPath: airAttackSound
+      value: 
+      objectReference: {fileID: 8300000, guid: 1d0fefae1c278814b840cb708e122913, type: 3}
+    - target: {fileID: 120665144307890864, guid: 3be7d6d483cc1314a80148df33470f93, type: 3}
+      propertyPath: rockAttackSound
+      value: 
+      objectReference: {fileID: 8300000, guid: f9a4703b42f1bde45a8d1419327d55c7, type: 3}
+    - target: {fileID: 120665144307890864, guid: 3be7d6d483cc1314a80148df33470f93, type: 3}
+      propertyPath: waterAttackSound
+      value: 
+      objectReference: {fileID: 8300000, guid: 8bb807b22e6147049afab398ad4050ea, type: 3}
     - target: {fileID: 120665144307890864, guid: 3be7d6d483cc1314a80148df33470f93, type: 3}
       propertyPath: availableAttacks.Array.size
       value: 1
@@ -9941,11 +9957,11 @@ MonoBehaviour:
   spawnPoint: {fileID: 1006171943}
   spawnPoint2: {fileID: 1443142315}
   rockEffect: {fileID: 0}
+  rockEffect: {fileID: 0}
   anim: {fileID: 1530884653}
   lifebar: {fileID: 0}
   attack1Sound: {fileID: 0}
   attack2Sound: {fileID: 0}
-  voiceSound: {fileID: 0}
 --- !u!1 &481055729
 GameObject:
   m_ObjectHideFlags: 0
@@ -51287,6 +51303,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rockEffect: {fileID: 7342966777550959169, guid: eac439c7be219d649a40dde059991077, type: 3}
   attack2Point: {fileID: 1068669240}
+  attack2Point: {fileID: 1068669240}
   lifebar: {fileID: 387621679}
   element: {fileID: 784320813}
   portal: {fileID: 1334681807}
@@ -51302,8 +51319,8 @@ MonoBehaviour:
   wave: {fileID: 3367062413916183456, guid: 8de24968de562df47a0d0681c51587f4, type: 3}
   Attack1Model: {fileID: 6460908274248292042, guid: 4acdccd9eec93bd4c9bac3a7d14a147d, type: 3}
   A1FirePoint: {fileID: 1068669240}
-  attack1Sound: {fileID: 0}
-  attack2Sound: {fileID: 0}
+  attack1Sound: {fileID: 8300000, guid: 0d122af988a93d94ab77d4873455292d, type: 3}
+  attack2Sound: {fileID: 8300000, guid: ac7258f1aa0837b4aa7bca7edde1c1dd, type: 3}
 --- !u!1 &2111577638
 GameObject:
   m_ObjectHideFlags: 0
