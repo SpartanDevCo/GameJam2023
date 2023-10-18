@@ -25,7 +25,8 @@ public class AirBoss_Attack1 : StateMachineBehaviour
     {
         if(bulletCount > 0)
         {
-           
+
+            
             if (animator.transform.position.y < 98f)
             {
                 boss.anim.SetBool("fly", true);
@@ -42,6 +43,7 @@ public class AirBoss_Attack1 : StateMachineBehaviour
                 else
                 {
                     boss.Shoot();
+                    GameManager.instance.PlaySFX(boss.slash);
                     timer = 0;
                     bulletCount--;
                 }
