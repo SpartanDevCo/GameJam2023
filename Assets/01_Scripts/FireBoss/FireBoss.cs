@@ -13,6 +13,7 @@ public class FireBoss : MonoBehaviour,IDamageable
     [SerializeField] GameObject rockEffect;
     public static float hp;
     public Slider lifebar;
+    public GameObject element;
 
     #region Alert
     bool beAlert;
@@ -68,6 +69,7 @@ public class FireBoss : MonoBehaviour,IDamageable
             p.hp = 100;
             p.heathbar.value = 100;
             lifebar.gameObject.SetActive(false);
+            element.SetActive(true);
             Destroy(gameObject);
         }
     }

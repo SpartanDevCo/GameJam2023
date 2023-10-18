@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
+using UnityEditor.Build.Content;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -15,6 +16,7 @@ public class EarthBoss : MonoBehaviour, IDamageable
     public float alertRange = 40;
     public bool found = false;
     public bool Near = false;
+    public GameObject element;
 
 
     [Header("Referencias")]
@@ -25,8 +27,12 @@ public class EarthBoss : MonoBehaviour, IDamageable
     public GameObject rainingRocks;
     [SerializeField] Transform spawnPoint;
     [SerializeField] Transform spawnPoint2;
+    [SerializeField] GameObject rockEffect;
     public Animator anim;
     public Slider lifebar;
+
+    [Header("Audio")]
+    public AudioClip attack1Sound, attack2Sound, voiceSound;
 
     void Start()
     {
@@ -57,15 +63,18 @@ public class EarthBoss : MonoBehaviour, IDamageable
     private void OnDestroy()
     {
         lifebar.gameObject.SetActive(false);
+        Instantiate(rockEffect,new Vector3(transform.position.x,transform.position.y + 5,transform.position.z),transform.rotation);
     }
 
     public void RockAttack(){
         Instantiate(rocks,spawnPoint.position + transform.forward *2, Quaternion.Euler(transform.rotation.eulerAngles.x + 30f, transform.rotation.eulerAngles.y, transform.rotation.eulerAngles.z));
+        GameManager.instance.PlaySFX(attack1Sound);
     }
 
     public void RainingRocksAttack(){
         Debug.Log("Raining Rocks");
         GameObject rainingRock = Instantiate(rainingRocks, spawnPoint2.position, Quaternion.identity);
+        GameManager.instance.PlaySFX(attack2Sound);
         Vector3 directionToPlayer = (target.position - rainingRock.transform.position).normalized;
         rainingRock.transform.forward = directionToPlayer;
 
@@ -77,6 +86,7 @@ public class EarthBoss : MonoBehaviour, IDamageable
     }
 
     public void TakeDamage(float damage){
+        GameManager.instance.PlaySFX(voiceSound);
         life -= damage;
         lifebar.value = life;
         Debug.Log("EarthBoss life: " + life);
@@ -84,10 +94,11 @@ public class EarthBoss : MonoBehaviour, IDamageable
             //animator.SetBool("isDead", true);
             Player p = GameObject.FindWithTag("Player").GetComponent<Player>();
             p.availableAttacks.Add(Player.AttackType.Rock);
-            anim.SetBool("dying", true);
+            //anim.SetBool("dying", true);
             lifebar.gameObject.SetActive(false);    
             p.hp = 100;
             p.heathbar.value = 100;
+            element.SetActive(true);
             Destroy(gameObject, 5f);
         }
     }
