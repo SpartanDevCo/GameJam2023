@@ -44,11 +44,19 @@ public class Player : MonoBehaviour, IDamageable
     [SerializeField] Transform cam;
     [SerializeField] Transform teleportPoint;
 
+    public AudioClip rockAttackSound;
+    public AudioClip airAttackSound;
+    public AudioClip waterAttackSound;
+
+    private AudioSource audioSource;
+
+
 
     [Header("Animaciones")]
     public Animator anim;
     void Start()
     {
+        audioSource = gameObject.AddComponent<AudioSource>(); // Add an AudioSource component to this GameObject.
         heathbar.maxValue = 100;
         energybar.maxValue = 100;
         energybar.value = 100;
@@ -245,6 +253,12 @@ public class Player : MonoBehaviour, IDamageable
                 // La posición del suelo donde el rayo golpea
                 Vector3 groundPosition = hit.point;
 
+                if (rockAttackSound != null)
+                {
+                    audioSource.volume = 0.3f;
+                    audioSource.PlayOneShot(rockAttackSound);
+                }
+
                 // Spawnear el objeto al nivel del suelo
                 Instantiate(rocks, groundPosition + transform.forward * 2, Quaternion.Euler(transform.rotation.eulerAngles.x + 30f, transform.rotation.eulerAngles.y, transform.rotation.eulerAngles.z));
             }
@@ -253,11 +267,24 @@ public class Player : MonoBehaviour, IDamageable
 
     void AirAttack()
     {
+        
+        if (airAttackSound != null)
+        {
+            audioSource.volume = 0.3f;
+            audioSource.PlayOneShot(airAttackSound);
+        }
+
         Instantiate(slash, spawnPoint.position + transform.forward * 2, Quaternion.Euler(transform.rotation.eulerAngles.x, transform.rotation.eulerAngles.y + 180f, transform.rotation.eulerAngles.z));
     }
 
     void WaterAttack()
     {
+        if (waterAttackSound != null)
+        {
+            audioSource.volume = 0.1f;
+            audioSource.PlayOneShot(waterAttackSound);
+        }
+
         Instantiate(waterBeam, spawnPoint.position, Quaternion.Euler(transform.rotation.eulerAngles.x, transform.rotation.eulerAngles.y, transform.rotation.eulerAngles.z));
     }
 

@@ -11,6 +11,8 @@ public class PlayerCollectWaterOBJ : MonoBehaviour
     public TMP_Text textCount;
     public GameObject countImg;
 
+    public LayerMask playerLayer;
+
     void Start()
     {
         // Make sure the portal is initially invisible
@@ -50,6 +52,11 @@ public class PlayerCollectWaterOBJ : MonoBehaviour
     {
         // You can use the teleportation mechanism of your choice.
         // For a simple example, just move the player to the center of the map.
-        transform.position = new Vector3(0, 18, 0); // Adjust these coordinates as needed.
+        if(Physics.CheckSphere(transform.position, 10, playerLayer))
+        {
+            transform.position = new Vector3(0, 18, 0);
+        }
+         // Adjust these coordinates as needed.
+
     }
 }

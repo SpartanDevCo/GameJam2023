@@ -7,11 +7,12 @@ using UnityEngine.SceneManagement;
 
 public class FireBoss : MonoBehaviour,IDamageable
 {
+    public static float hp;
     float life = 100;
-    public Transform attack2Point;
+
     [Header("Referencias")]
     [SerializeField] GameObject rockEffect;
-    public static float hp;
+    public Transform attack2Point;
     public Slider lifebar;
     public GameObject element;
     public ParticleSystem portal;
@@ -30,21 +31,18 @@ public class FireBoss : MonoBehaviour,IDamageable
     
     #endregion
 
-    #region Movement
+    [Header("Movimiento")]
     public Transform target;
     public float speed = 8;
     bool playerFound = false;
 
-    #endregion
-
-    #region Attack 2
+    [Header("Ataques")]
     public GameObject wave;
-    #endregion
-
-    #region Movement
     public GameObject Attack1Model;
     public Transform A1FirePoint;
-    #endregion
+    
+    [Header("Sonidos")]
+    public AudioClip attack1Sound, attack2Sound;
 
     void Start()
     {
@@ -81,11 +79,13 @@ public class FireBoss : MonoBehaviour,IDamageable
     {
         Quaternion newRotation = Quaternion.Euler(attack2Point.rotation.eulerAngles.x, attack2Point.rotation.eulerAngles.y + 90, attack2Point.rotation.eulerAngles.z);
         Instantiate(wave, new Vector3(attack2Point.position.x, attack2Point.position.y, attack2Point.position.z), newRotation);
+        GameManager.instance.PlaySFX(attack2Sound);
     }
 
     public void AttackOne()
     {
         Instantiate(Attack1Model, new Vector3(A1FirePoint.position.x, A1FirePoint.position.y, A1FirePoint.position.z), Quaternion.Euler(0, 0, 0));
+        GameManager.instance.PlaySFX(attack1Sound);
     }
     public void BeAlert()
     {
