@@ -8,7 +8,7 @@ public class SharkDamage : MonoBehaviour,IDamageable
     public float maxHealth = 100;
     private float currentHealth;
     public GameObject finalObject;
-    
+    public GameObject element;
 
     private void Start()
     {
@@ -42,6 +42,7 @@ public class SharkDamage : MonoBehaviour,IDamageable
         p.availableAttacks.Add(Player.AttackType.Wind);
         p.hp = 100;
         p.heathbar.value = 100;
+        element.SetActive(true);
         Destroy(gameObject);
         finalObject.SetActive(true);
         
