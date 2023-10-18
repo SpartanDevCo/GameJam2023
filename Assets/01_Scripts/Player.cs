@@ -28,6 +28,7 @@ public class Player : MonoBehaviour, IDamageable
     Vector3 velocity;
     public AttackType attackType = AttackType.Melee;
     public List<AttackType> availableAttacks = new List<AttackType>() { AttackType.Melee };
+    public AudioClip magicCharge;
     
     [Header("Referencias")]
     [SerializeField] GameObject rocks;

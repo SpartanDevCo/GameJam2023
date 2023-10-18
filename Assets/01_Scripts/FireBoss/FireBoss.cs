@@ -14,6 +14,7 @@ public class FireBoss : MonoBehaviour,IDamageable
     public static float hp;
     public Slider lifebar;
     public GameObject element;
+    public ParticleSystem portal;
 
     #region Alert
     bool beAlert;
@@ -70,6 +71,8 @@ public class FireBoss : MonoBehaviour,IDamageable
             p.heathbar.value = 100;
             lifebar.gameObject.SetActive(false);
             element.SetActive(true);
+            portal.gameObject.SetActive(true);
+            portal.Play();
             Destroy(gameObject);
         }
     }

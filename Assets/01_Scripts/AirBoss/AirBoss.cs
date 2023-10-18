@@ -73,7 +73,7 @@ public class AirBoss : MonoBehaviour, IDamageable
         // Instantiate(bulletPrefab, firepoint.position,
         //     Quaternion.Euler( -angleX, firepoint.rotation.y, firepoint.rotation.z));
         Instantiate(bulletPrefab, firepoint.position, firepoint.rotation);
-        GameManager.instance.PlaySFX(slash);
+        
 
     }
     #endregion
