@@ -32,7 +32,7 @@ public class EarthBoss : MonoBehaviour, IDamageable
     public Slider lifebar;
 
     [Header("Audio")]
-    public AudioClip attack1Sound, attack2Sound, voiceSound;
+    public AudioClip attack1Sound, attack2Sound;
 
     void Start()
     {
@@ -86,7 +86,7 @@ public class EarthBoss : MonoBehaviour, IDamageable
     }
 
     public void TakeDamage(float damage){
-        GameManager.instance.PlaySFX(voiceSound);
+        
         life -= damage;
         lifebar.value = life;
         Debug.Log("EarthBoss life: " + life);
