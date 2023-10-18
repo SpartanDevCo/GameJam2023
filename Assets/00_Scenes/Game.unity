@@ -2266,8 +2266,12 @@ MonoBehaviour:
   rainingRocks: {fileID: 4892234043173908339, guid: 0e8450fad940c47448a74cb90994394a, type: 3}
   spawnPoint: {fileID: 249806540}
   spawnPoint2: {fileID: 1296963227}
+  rockEffect: {fileID: 0}
   anim: {fileID: 81550967}
   lifebar: {fileID: 1893914067}
+  attack1Sound: {fileID: 0}
+  attack2Sound: {fileID: 0}
+  voiceSound: {fileID: 0}
 --- !u!95 &81550967
 Animator:
   serializedVersion: 5
@@ -2741,7 +2745,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 96908398}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.18160702, y: 0.32595846, z: -0.06395664, w: 0.9255699}
+  m_LocalRotation: {x: 0.19253978, y: 0.000000051990572, z: -0.0000000102011235, w: 0.9812892}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -4782,7 +4786,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3071536033191948301, guid: 3be7d6d483cc1314a80148df33470f93, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -4.1
+      value: 214.5
       objectReference: {fileID: 0}
     - target: {fileID: 3071536033191948301, guid: 3be7d6d483cc1314a80148df33470f93, type: 3}
       propertyPath: m_LocalRotation.w
@@ -4919,7 +4923,7 @@ PrefabInstance:
     - target: {fileID: 6720299098641604445, guid: 3be7d6d483cc1314a80148df33470f93, type: 3}
       propertyPath: portal
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 1847770309}
     - target: {fileID: 6720299098641604445, guid: 3be7d6d483cc1314a80148df33470f93, type: 3}
       propertyPath: countImg
       value: 
@@ -4930,7 +4934,7 @@ PrefabInstance:
       objectReference: {fileID: 649528239}
     - target: {fileID: 6720299098641604445, guid: 3be7d6d483cc1314a80148df33470f93, type: 3}
       propertyPath: totalCubes
-      value: 3
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 6926592111966607235, guid: 3be7d6d483cc1314a80148df33470f93, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -7376,7 +7380,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 338305146}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.21384126, y: 0.3235243, z: -0.07530858, w: 0.9186581}
+  m_LocalRotation: {x: 0.22671449, y: 0.00000007033874, z: -0.000000016373146, w: 0.9739613}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -8031,7 +8035,7 @@ Transform:
   m_GameObject: {fileID: 351546033}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.36037874, y: 11.3, z: -11.113892}
+  m_LocalPosition: {x: 5.999999, y: 11.3, z: 205.5}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -9936,8 +9940,12 @@ MonoBehaviour:
   rainingRocks: {fileID: 4892234043173908339, guid: 0e8450fad940c47448a74cb90994394a, type: 3}
   spawnPoint: {fileID: 1006171943}
   spawnPoint2: {fileID: 1443142315}
+  rockEffect: {fileID: 0}
   anim: {fileID: 1530884653}
   lifebar: {fileID: 0}
+  attack1Sound: {fileID: 0}
+  attack2Sound: {fileID: 0}
+  voiceSound: {fileID: 0}
 --- !u!1 &481055729
 GameObject:
   m_ObjectHideFlags: 0
@@ -14378,7 +14386,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 806304240}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.14946601, y: 0.3279766, z: -0.052637525, w: 0.9313005}
+  m_LocalRotation: {x: 0.15846388, y: 0.00000007130672, z: -0.000000011444139, w: 0.9873648}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -47005,13 +47013,14 @@ GameObject:
   - component: {fileID: 1847770311}
   - component: {fileID: 1847770310}
   - component: {fileID: 1847770314}
+  - component: {fileID: 1847770315}
   m_Layer: 0
-  m_Name: Portal
+  m_Name: PortalWater
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!136 &1847770310
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -47094,8 +47103,8 @@ Transform:
   m_GameObject: {fileID: 1847770309}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 3.9, y: 4.63, z: 259.5}
-  m_LocalScale: {x: 10, y: 4, z: 10}
+  m_LocalPosition: {x: 3.9, y: 6.41, z: 259.5}
+  m_LocalScale: {x: 10, y: 1, z: 10}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -47127,6 +47136,23 @@ Rigidbody:
   m_Interpolate: 1
   m_Constraints: 126
   m_CollisionDetection: 0
+--- !u!114 &1847770315
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1847770309}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b187cbc07283c0a4292cd98bbccd2793, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  radio: 5
+  playerLayer:
+    serializedVersion: 2
+    m_Bits: 8
+  spawnpoint: {fileID: 1363861883}
 --- !u!1 &1849208824
 GameObject:
   m_ObjectHideFlags: 0
@@ -47941,8 +47967,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1890129959}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.18160698, y: 0.32595843, z: -0.06395664, w: 0.9255699}
-  m_LocalPosition: {x: 0.36037874, y: 11.3, z: -11.113892}
+  m_LocalRotation: {x: 0.1925398, y: 0.00000008123528, z: -0.00000001593926, w: 0.9812892}
+  m_LocalPosition: {x: 5.999999, y: 11.3, z: 205.5}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -49614,7 +49640,7 @@ Transform:
   m_GameObject: {fileID: 1993708116}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 6, y: 6.3, z: -4.1}
+  m_LocalPosition: {x: 6, y: 6.3, z: 214.5}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -51259,8 +51285,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f6b3b23f28e240443b9cc8e8a6e8de1d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  attack2Point: {fileID: 1068669240}
   rockEffect: {fileID: 7342966777550959169, guid: eac439c7be219d649a40dde059991077, type: 3}
+  attack2Point: {fileID: 1068669240}
   lifebar: {fileID: 387621679}
   element: {fileID: 784320813}
   portal: {fileID: 1334681807}
@@ -51276,6 +51302,8 @@ MonoBehaviour:
   wave: {fileID: 3367062413916183456, guid: 8de24968de562df47a0d0681c51587f4, type: 3}
   Attack1Model: {fileID: 6460908274248292042, guid: 4acdccd9eec93bd4c9bac3a7d14a147d, type: 3}
   A1FirePoint: {fileID: 1068669240}
+  attack1Sound: {fileID: 0}
+  attack2Sound: {fileID: 0}
 --- !u!1 &2111577638
 GameObject:
   m_ObjectHideFlags: 0

@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class prueba : MonoBehaviour
+public class PortalWater : MonoBehaviour
 {
     public float radio = 1f; // Radio de la esfera
     public LayerMask playerLayer; // Capa del jugador
