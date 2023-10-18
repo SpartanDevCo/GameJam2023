@@ -30,9 +30,10 @@ public class AirBoss_Attack2 : StateMachineBehaviour
             boss.anim.SetBool("idle", false);
             float distance = Vector3.Distance(animator.transform.position, boss.PatrolPoints[currentPoint].target.position);
 
-            if (distance > 0.8f)
+            if (distance > 1.5f)
             {
-                animator.transform.Translate(0, 0, 20 * Time.deltaTime);
+                animator.transform.Translate(0, 0, 15 * Time.deltaTime);
+                
             }
             else
             {

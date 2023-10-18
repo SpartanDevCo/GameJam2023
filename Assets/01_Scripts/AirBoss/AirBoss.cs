@@ -10,10 +10,13 @@ public class AirBoss : MonoBehaviour, IDamageable
     [Header("Atributos")]
     public float minWaitTime = 7;
     public float maxWaitTime = 10;
-    public float life = 20;
+    public float life = 100;
     public Animator anim;
     public Slider lifebar;
     public bool death;
+    public GameObject deathEffect;
+    public GameObject element;
+
 
     [Header("Alerta")]
     public bool beAlert;
@@ -38,8 +41,8 @@ public class AirBoss : MonoBehaviour, IDamageable
 
     void Start()
     {
-        lifebar.maxValue = 20;
-        lifebar.value = 20;
+        lifebar.maxValue = life;
+        lifebar.value = life;
         death = false;
     }
 
@@ -109,6 +112,8 @@ public class AirBoss : MonoBehaviour, IDamageable
             p.hp = 100;
             p.heathbar.value = 100;
             lifebar.gameObject.SetActive(false);
+            Instantiate(deathEffect, transform.position, transform.rotation);
+            element.gameObject.SetActive(true);
             Destroy(gameObject);
         }
     }
