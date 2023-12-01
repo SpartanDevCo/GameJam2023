@@ -48,6 +48,9 @@ public class Player : MonoBehaviour, IDamageable
     public AudioClip airAttackSound;
     public AudioClip waterAttackSound;
 
+    public AudioClip jumpSound;
+    public AudioClip hurtSound;
+
     private AudioSource audioSource;
 
 
@@ -105,6 +108,7 @@ public class Player : MonoBehaviour, IDamageable
         {
             velocity.y = Mathf.Sqrt(jumpHeight * -2f * gravity);
             anim.SetTrigger("Jumping");
+            GameManager.instance.PlaySFX(jumpSound);
         }
 
         velocity.y += gravity * Time.deltaTime;
@@ -299,6 +303,7 @@ public class Player : MonoBehaviour, IDamageable
         {
             hp -= damage;
             heathbar.value = hp;
+            GameManager.instance.PlaySFX(hurtSound);
             UnityEngine.Debug.Log("DAÑO AL JUGADOR HP= " + hp);
             if (hp <= 0)
             {

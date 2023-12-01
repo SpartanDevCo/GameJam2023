@@ -9,6 +9,8 @@ public class ElementText : MonoBehaviour
 
     void Start()
     {
+        Cursor.lockState = CursorLockMode.Locked;
+
         StartCoroutine(ShowText());
     }
 

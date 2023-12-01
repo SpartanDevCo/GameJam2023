@@ -20,7 +20,7 @@ public class RockBall : MonoBehaviour
     private void OnCollisionEnter(Collision other) {
         if(other.gameObject.tag == "Player"){
             Destroy(gameObject);
-            other.gameObject.GetComponent<IDamageable>().TakeDamage(2);
+            other.gameObject.GetComponent<IDamageable>().TakeDamage(7);
         }
     }
 }

@@ -366,6 +366,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   damage: 5
   multiplier: 1
+  clawsSound: {fileID: 8300000, guid: 142ffc5cea4f8784c9032e6de0dc10d1, type: 3}
 --- !u!95 &7569385492542602348
 Animator:
   serializedVersion: 5

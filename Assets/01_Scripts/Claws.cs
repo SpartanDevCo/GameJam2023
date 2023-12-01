@@ -7,10 +7,12 @@ public class Claws : MonoBehaviour
     [Header("Atributos")]
     [SerializeField] float damage = 1;
     [SerializeField] float multiplier=1;
+
+    public AudioClip clawsSound;
     // Start is called before the first frame update
     void Start()
     {
-        
+        GameManager.instance.PlaySFX(clawsSound);
     }
 
     // Update is called once per frame

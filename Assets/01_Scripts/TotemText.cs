@@ -15,6 +15,7 @@ public class TotemText : MonoBehaviour
     public string text;
     void Start()
     {
+        Cursor.lockState = CursorLockMode.Locked;
 
     }
 
